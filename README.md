@@ -33,3 +33,5 @@ sort -K1,1 -k2,2n infile.vcf > outfile.vcf<br>
 sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf<br>
 <br>
 <br>
+**Replace spaces with a single tab**
+sed 's/ \+/\t/g' infile > outfile<br>
