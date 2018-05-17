@@ -35,13 +35,12 @@ awk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
 awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.vcf
 <br>
 <br>
-# Sort karyotipically a VCF (version 1)
+*Sort karyotipically a VCF (version 1)*
 ----------
 sort -K1,1 -k2,2n infile.vcf > outfile.vcf
 <br>
 <br>
-# Sort karyotypically a VCF (version 2)
-# Use '-V', natural sort of (version) numbers within text:
+*Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text:*
 ----------
 sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 <br>
