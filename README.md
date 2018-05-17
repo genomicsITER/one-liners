@@ -2,7 +2,7 @@
 Frequently used commands in Bioinformatics
 <br>
 <br>
-##  Select region from 1KGP chr.vcf.gz, extract, compress, and tabix
+#  Select region from 1KGP chr.vcf.gz, extract, compress, and tabix
 region="3:10000-11000"
 <br>
 infile="ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"
