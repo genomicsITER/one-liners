@@ -35,7 +35,7 @@ awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.v
 sort -K1,1 -k2,2n infile.vcf > outfile.vcf
 <br>
 <br>
-# Sort karyotipically a VCF (version 2)
+# Sort karyotypically a VCF (version 2)
 # Use '-V', natural sort of (version) numbers within text:
 sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 <br>
