@@ -4,7 +4,7 @@
 region="3:10000-11000"<br>
 infile="ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"<br>
 outfile="1KGP.chr3.region"<br>
-tabix -h ${infile} ${region} > ${outfile}.vcf<br<br>>
+tabix -h ${infile} ${region} > ${outfile}.vcf<br>
 bgzip -c ${outfile}.vcf > ${outfile}.vcf.gz<br>
 tabix -p vcf ${outfile}.vcf.gz
 <br>
@@ -37,3 +37,8 @@ sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf<br>
 sed 's/ \+/\t/g' infile > outfile<br>
 <br>
 <br>
+**Compute BAM coverage with BEDtools**<br>
+bedtools genomecov -ibam infile.bam -bg > coverage.txt
+<br>
+<br>
+
