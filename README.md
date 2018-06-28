@@ -26,7 +26,8 @@ awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.v
 <br>
 <br>
 **Sort karyotipically a VCF (version 1)**<br>
-sort -K1,1 -k2,2n infile.vcf > outfile.vcf<br>
+##Notice that header must be removed at some point 
+grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.vcf
 <br>
 <br>
 **Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text**<br>
