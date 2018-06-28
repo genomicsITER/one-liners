@@ -26,7 +26,7 @@ awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.v
 <br>
 <br>
 **Sort karyotipically a VCF (version 1)**<br>
-##Notice that header must be removed at some point 
+##Notice that header must be removed at some point <br>
 grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.vcf
 <br>
 <br>
