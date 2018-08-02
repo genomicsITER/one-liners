@@ -39,7 +39,20 @@ sed 's/ \+/\t/g' infile > outfile<br>
 <br>
 <br>
 **Compute BAM coverage with BEDtools**<br>
-bedtools genomecov -ibam infile.bam -bg > coverage.txt
+bedtools genomecov -ibam infile.bam -bg > coverage.txt<br>
+<br>
+<br>
+**Find duplicated lines in a VCF matching the whole line**<br>
+awk ' !uniq[$0]++ ' infile.vcf<br>
+<br>
+<br>
+**Find duplicated lines in a VCF matching files 1, 2, and 5**<br>
+awk ' !uniq[$1 FS $2 FS $5]++ ' infile.vcf<br>
+<br>
+<br>
+**Find a line by a field on it, delete it, and save the result**<br>
+string=abc<br>
+grep -v $string infile > outfile<br>
 <br>
 <br>
 
