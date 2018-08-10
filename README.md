@@ -57,10 +57,11 @@ grep -v $string infile > outfile<br>
 <br>
 **Count the number of mapped reads for each read in PE reads**<br>
 samtools view -F 0x40 infile.bam | cut -f1 | sort | uniq | wc -l<br>
-#Left read<br>
+#Left read: view the BAM content filtering by the provided SAM flags, cut the first column, sort the data on that column, keep only the uniq data on that column, and count the number of lines.<br>
 samtools view -f 0x40 -F 0x4 infile.bam | cut -f1 | sort | uniq | wc -l<br>
 #Right read<br>
 samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l<br>
+<br>Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/SAMv1.pdf
 <br>
 <br>
 
