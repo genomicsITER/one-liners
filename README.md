@@ -55,4 +55,12 @@ string=abc<br>
 grep -v $string infile > outfile<br>
 <br>
 <br>
+**Count the number of mapped reads for each read in PE reads**<br>
+samtools view -F 0x40 infile.bam | cut -f1 | sort | uniq | wc -l<br>
+#Left read<br>
+samtools view -f 0x40 -F 0x4 infile.bam | cut -f1 | sort | uniq | wc -l<br>
+#Right read<br>
+samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l<br>
+<br>
+<br>
 
