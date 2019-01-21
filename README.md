@@ -64,4 +64,7 @@ samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l<br>
 <br>Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/SAMv1.pdf
 <br>
 <br>
+**Replace white spaces with tabs**<br>
+awk -v OFS="\t" '$1=$1' infile > outfile
+
 
