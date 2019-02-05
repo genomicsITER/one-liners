@@ -68,7 +68,7 @@ samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l<br>
 awk -v OFS="\t" '$1=$1' infile > outfile
 <br>
 <br>
-**Add rs from INFO field (avsnp150) to ID column in a VCF**
+**Add rs from INFO field (avsnp150) to ID column in a VCF**<br>
 cat infile | awk '
 BEGIN { FS=OFS="\t" }
 {
