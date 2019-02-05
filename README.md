@@ -66,5 +66,18 @@ samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l<br>
 <br>
 **Replace white spaces with tabs**<br>
 awk -v OFS="\t" '$1=$1' infile > outfile
-
-
+<br>
+<br>
+**Add rs from INFO field (avsnp150) to ID column in a VCF**
+cat infile | awk '
+BEGIN { FS=OFS="\t" }
+{
+if ($3 == ".") {
+$3=match($8, /avsnp150=((rs[0-9]+)|.)/, arr)
+$3=arr[0]
+sub(/avsnp150=/, "", $3)
+}
+print
+}' > outfile
+<br>
+<br>
