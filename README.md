@@ -86,6 +86,9 @@ awk '!visited[$0]++' infile > deduplicated_infile
 <br>
 <br>Note: see https://iridakos.com/how-to/2019/05/16/remove-duplicate-lines-preserving-order-linux.html
 <br>
+<br>Or equivalently (using cat, sort and cut):
+cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
+<br>
 <br>
 
 
