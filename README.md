@@ -91,5 +91,9 @@ awk '!visited[$0]++' infile > deduplicated_infile
 cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 <br>
 <br>
-
-
+**Number of files per extension type in the current directory**<br>
+nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | sed 's/^ *//g' | sed 's/ /\t/g'; }
+<br>
+<br>Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension at the current directory.
+<br>
+<br>
