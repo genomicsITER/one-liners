@@ -144,10 +144,11 @@ cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 **Number of files per extension type in the current directory**
 ```Bash
 #!/bin/bash
-nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | sed 's/^ *//g' | sed 's/ /\t/g'; }
+nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c \
+    | sed 's/^ *//g' | sed 's/ /\t/g'; }
 
-# Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension 
-# at the current directory.
+# Note: run this code and then write "nfiletypes" at the prompt and will see the count of 
+# files per extension at the current directory.
 # End of script
 ```
 
