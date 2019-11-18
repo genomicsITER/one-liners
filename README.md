@@ -97,3 +97,9 @@ nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | s
 <br>Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension at the current directory.
 <br>
 <br>
+**Parse file with AWK, sum column values in each line, and shows the result**<br>
+<br>
+<br>
+awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END { for (i in a) print a[i] }' infile
+<br>
+<br>
