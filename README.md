@@ -27,20 +27,21 @@ tabix -p vcf ${outfile}.${suffix}.vcf.gz
 <br>
 **Remove "chr" string in variants in a VCF**<br>
 ```Bash
-#!/bin/bashawk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
+#!/bin/bash
+awk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
 # End of script
 ```
 <br>
 <br>
 **Add "chr" string in variants in VCF**<br>
 ```Bash
-#!/bin/bashawk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.vcf
+#!/bin/bash
+awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.vcf
 # End of script
 ```
 <br>
 <br>
 **Sort karyotipically a VCF (version 1)**<br>
-
 ```Bash
 #!/bin/bash
 ##Notice that header must be removed at some point
@@ -51,28 +52,32 @@ grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.
 <br>
 **Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text**<br>
 ```Bash
-#!/bin/bashsort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
+#!/bin/bash
+sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 # End of script
 ```
 <br>
 <br>
 **Replace spaces with a single tab**<br>
 ```Bash
-#!/bin/bashsed 's/ \+/\t/g' infile > outfile<br>
+#!/bin/bash
+sed 's/ \+/\t/g' infile > outfile<br>
 # End of script
 ```
 <br>
 <br>
 **Compute BAM coverage with BEDtools**<br>
 ```Bash
-#!/bin/bashbedtools genomecov -ibam infile.bam -bg > coverage.txt<br>
+#!/bin/bash
+bedtools genomecov -ibam infile.bam -bg > coverage.txt<br>
 # End of script
 ```
 <br>
 <br>
 **Find duplicated lines in a VCF matching the whole line**<br>
 ```Bash
-#!/bin/bashawk ' !uniq[$0]++ ' infile.vcf
+#!/bin/bash
+awk ' !uniq[$0]++ ' infile.vcf
 # End of script
 ```
 <br>
@@ -87,7 +92,8 @@ awk ' !uniq[$1 FS $2 FS $5]++ ' infile.vcf
 <br>
 **Find a line by a field on it, delete it, and save the result**<br>
 ```Bash
-#!/bin/bashstring=abc<br>
+#!/bin/bash
+string=abc<br>
 grep -v $string infile > outfile
 # End of script
 ```
@@ -111,14 +117,16 @@ Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/
 <br>
 **Replace white spaces with tabs**<br>
 ```Bash
-#!/bin/bashawk -v OFS="\t" '$1=$1' infile > outfile
+#!/bin/bash
+awk -v OFS="\t" '$1=$1' infile > outfile
 # End of script
 ```
 <br>
 <br>
 **Add rs from INFO field (avsnp150) to ID column in a VCF**<br>
 ```Bash
-#!/bin/bashcat infile | awk '
+#!/bin/bash
+cat infile | awk '
 BEGIN { FS=OFS="\t" }
 {
 if ($3 == ".") {
@@ -147,7 +155,8 @@ cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 <br>
 **Number of files per extension type in the current directory**<br>
 ```Bash
-#!/bin/bashnfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | sed 's/^ *//g' | sed 's/ /\t/g'; }
+#!/bin/bash
+nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | sed 's/^ *//g' | sed 's/ /\t/g'; }
 
 # Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension at the current directory.
 # End of script
@@ -156,7 +165,8 @@ cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 <br>
 **Parse file with AWK, sum column values in each line, and shows the result**<br>
 ```Bash
-#!/bin/bashawk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (i in a) print a[i] }' infile
+#!/bin/bash
+awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (i in a) print a[i] }' infile
 <br>
 <br>
 
