@@ -1,6 +1,6 @@
 # one-liners, frequently used commands in Bioinformatics
 
-**Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**<br>
+**Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**
 ```Bash
 #!/bin/bash
 region="3:10000-11000"
@@ -11,95 +11,81 @@ bgzip -c ${outfile}.vcf > ${outfile}.vcf.gz
 tabix -p vcf ${outfile}.vcf.gz
 # End of script
 ```
-<br>
-<br>
-**Select a subset of samples (list here contains GBR individuals from 1KGP), and tabix**<br>
-```Bash
-#!/bin/bash
-outfile="1KGP.chr3"
-lista="pop_GBR"
-suffix="GBR"
-vcf-subset -c ${lista} ${outfile}.vcf.gz | bgzip -c > ${outfile}.${suffix}.vcf.gz
-tabix -p vcf ${outfile}.${suffix}.vcf.gz
-# End of script
-```
-<br>
-<br>
-**Remove "chr" string in variants in a VCF**<br>
+
+
+**Remove "chr" string in variants in a VCF**
 ```Bash
 #!/bin/bash
 awk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
 # End of script
 ```
-<br>
-<br>
-**Add "chr" string in variants in VCF**<br>
+
+
+**Add "chr" string in variants in VCF**
 ```Bash
 #!/bin/bash
 awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.vcf
 # End of script
 ```
-<br>
-<br>
-**Sort karyotipically a VCF (version 1)**<br>
+
+
+**Sort karyotipically a VCF (version 1)**
 ```Bash
 #!/bin/bash
 ##Notice that header must be removed at some point
 grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.vcf
 # End of script
 ```
-<br>
-<br>
-**Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text**<br>
+
+
+**Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text**
 ```Bash
 #!/bin/bash
 sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 # End of script
 ```
-<br>
-<br>
-**Replace spaces with a single tab**<br>
+
+
+**Replace spaces with a single tab**
 ```Bash
 #!/bin/bash
-sed 's/ \+/\t/g' infile > outfile<br>
+sed 's/ \+/\t/g' infile > outfile
 # End of script
 ```
-<br>
-<br>
-**Compute BAM coverage with BEDtools**<br>
+
+
+**Compute BAM coverage with BEDtools**
 ```Bash
 #!/bin/bash
-bedtools genomecov -ibam infile.bam -bg > coverage.txt<br>
+bedtools genomecov -ibam infile.bam -bg > coverage.txt
 # End of script
 ```
-<br>
-<br>
-**Find duplicated lines in a VCF matching the whole line**<br>
+
+
+**Find duplicated lines in a VCF matching the whole line**
 ```Bash
 #!/bin/bash
 awk ' !uniq[$0]++ ' infile.vcf
 # End of script
 ```
-<br>
-<br>
-**Find duplicated lines in a VCF matching files 1, 2, and 5**<br>
+
+**Find duplicated lines in a VCF matching files 1, 2, and 5**
 ```Bash
 #!/bin/bash
 awk ' !uniq[$1 FS $2 FS $5]++ ' infile.vcf
 # End of script
 ```
-<br>
-<br>
-**Find a line by a field on it, delete it, and save the result**<br>
+
+**Find a line by a field on it, delete it, and save the result**
 ```Bash
 #!/bin/bash
 string=abc<br>
 grep -v $string infile > outfile
 # End of script
 ```
-<br>
-<br>
-**Count the number of mapped reads for each read in PE reads**<br>
+
+
+**Count the number of mapped reads for each read in PE reads**
 ```Bash
 #!/bin/bash
 samtools view -F 0x40 infile.bam | cut -f1 | sort | uniq | wc -l
@@ -113,17 +99,17 @@ samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l
 Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/SAMv1.pdf
 # End of script
 ```
-<br>
-<br>
-**Replace white spaces with tabs**<br>
+
+
+**Replace white spaces with tabs**
 ```Bash
 #!/bin/bash
 awk -v OFS="\t" '$1=$1' infile > outfile
 # End of script
 ```
-<br>
-<br>
-**Add rs from INFO field (avsnp150) to ID column in a VCF**<br>
+
+
+**Add rs from INFO field (avsnp150) to ID column in a VCF**
 ```Bash
 #!/bin/bash
 cat infile | awk '
@@ -138,9 +124,9 @@ print
 }' > outfile
 # End of script
 ```
-<br>
-<br>
-**Remove duplicated lines in a file while keeping the original order**<br>
+
+
+**Remove duplicated lines in a file while keeping the original order**
 ```Bash
 #!/bin/bash
 awk '!visited[$0]++' infile > deduplicated_infile
@@ -151,9 +137,9 @@ awk '!visited[$0]++' infile > deduplicated_infile
 cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 # End of script
 ```
-<br>
-<br>
-**Number of files per extension type in the current directory**<br>
+
+
+**Number of files per extension type in the current directory**
 ```Bash
 #!/bin/bash
 nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | sed 's/^ *//g' | sed 's/ /\t/g'; }
@@ -161,9 +147,9 @@ nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | s
 # Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension at the current directory.
 # End of script
 ```
-<br>
-<br>
-**Parse file with AWK, sum column values in each line, and shows the result**<br>
+
+
+**Parse file with AWK, sum column values in each line, and shows the result**
 ```Bash
 #!/bin/bash
 awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (i in a) print a[i] }' infile
