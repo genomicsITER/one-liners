@@ -98,6 +98,6 @@ nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | s
 <br>
 <br>
 **Parse file with AWK, sum column values in each line, and shows the result**<br>
-awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END { for (i in a) print a[i] }' infile
+awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (i in a) print a[i] }' infile
 <br>
 <br>
