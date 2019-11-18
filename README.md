@@ -55,6 +55,22 @@ sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 ```
 
 
+**Sort karyotypically a VCF (version 3): using vcf-sort (from vcftools)**
+```Bash
+#!/bin/bash
+cat infile.vcf | vcf-sort --chromosomal-order > infile.sorted.vcf
+# End of script
+```
+
+
+**Sort karyotypically a VCF (version 4): using PICARD**
+```Bash
+#!/bin/bash
+java -jar picard.jar SortVcf I=unsorted.infile.vcf O=sorted.infile.vcf
+# End of script
+```
+
+
 **Replace spaces with a single tab**
 ```Bash
 #!/bin/bash
