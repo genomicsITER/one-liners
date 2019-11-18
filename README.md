@@ -90,7 +90,8 @@ grep -v $string infile > outfile
 #!/bin/bash
 samtools view -F 0x40 infile.bam | cut -f1 | sort | uniq | wc -l
 
-#Left read: view the BAM content filtering by the provided SAM flags, cut the first column, sort the data on that column, keep only the uniq data on that column, and count the number of lines.
+#Left read: view the BAM content filtering by the provided SAM flags, cut the first column, 
+# sort the data on that column, keep only the uniq data on that column, and count the number of lines.
 samtools view -f 0x40 -F 0x4 infile.bam | cut -f1 | sort | uniq | wc -l
 
 #Right read<br>
@@ -132,7 +133,8 @@ print
 awk '!visited[$0]++' infile > deduplicated_infile
 
 #Note: see https://iridakos.com/how-to/2019/05/16/remove-duplicate-lines-preserving-order-linux.html
-# Or equivalently (using cat, sort and cut: cat showing numbers, sort using the second column and keep the first ocurrence of number, sort using the number, and cut the second column; clever!):
+# Or equivalently (using cat, sort and cut: cat showing numbers, sort using the second column and 
+# keep the first ocurrence of number, sort using the number, and cut the second column; clever!):
 
 cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 # End of script
@@ -144,7 +146,8 @@ cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 #!/bin/bash
 nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c | sed 's/^ *//g' | sed 's/ /\t/g'; }
 
-# Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension at the current directory.
+# Note: run this code and then write "nfiletypes" at the prompt and will see the count of files per extension 
+# at the current directory.
 # End of script
 ```
 
@@ -159,7 +162,12 @@ awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (
 **Count genotypes in a VCF imputed at Michigan Imputation Server**br>
 Based on script by tommycarstensen<br>
 See: https://gatkforums.broadinstitute.org/gatk/discussion/5692/count-genotypes-per-position-in-a-multi-sample-vcf<br>
-In each line of your infile, split the line by ":" and the split again by genotype delimiters (unphased, "/"; phased, "|"). Then, split again the genotype field and assign its values (REF, delimiter, and ALT) to GT awk-variable. Then, parse the GT variable according to the expected genotype values (./. for missing or untyped genotype; 0/0 for hom-ref; ref=alt for hom-alt; and heterozygous for the rest of conditions: 1/0 or 0/1). Finally, show the count of genotypes and, possible, the count of variant genotypes (Het+HomAlt).<br>
+In each line of your infile, split the line by ":" and the split again by genotype delimiters 
+# (unphased, "/"; phased, "|"). Then, split again the genotype field and assign its values 
+# (REF, delimiter, and ALT) to GT awk-variable. Then, parse the GT variable according to the 
+# expected genotype values (./. for missing or untyped genotype; 0/0 for hom-ref; ref=alt for 
+# hom-alt; and heterozygous for the rest of conditions: 1/0 or 0/1). Finally, show the count 
+# of genotypes and, possible, the count of variant genotypes (Het+HomAlt).
 
 ```Bash
 #!/bin/bash
