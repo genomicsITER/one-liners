@@ -3,11 +3,11 @@
 **Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**<br>
 ```Bash
 #!/bin/bash
-region="3:10000-11000"<br>
-infile="ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"<br>
-outfile="1KGP.chr3.region"<br>
-tabix -h ${infile} ${region} > ${outfile}.vcf<br>
-bgzip -c ${outfile}.vcf > ${outfile}.vcf.gz<br>
+region="3:10000-11000"
+infile="ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"
+outfile="1KGP.chr3.region"
+tabix -h ${infile} ${region} > ${outfile}.vcf
+bgzip -c ${outfile}.vcf > ${outfile}.vcf.gz
 tabix -p vcf ${outfile}.vcf.gz
 # End of script
 ```
