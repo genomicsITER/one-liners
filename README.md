@@ -106,6 +106,7 @@ awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (
 By tommycarstensen
 See: https://gatkforums.broadinstitute.org/gatk/discussion/5692/count-genotypes-per-position-in-a-multi-sample-vcf
 <br>
+<br>
 zgrep -v "^#" infile.vcf.gz | awk '{
     unknown=0; homref=0; het=0; homalt=0; for(i=10;i<=NF;i++) {
     split($i,a,":"); split(a[1],GT,"[/|]");
@@ -115,17 +116,18 @@ zgrep -v "^#" infile.vcf.gz | awk '{
     else {het++}};
     print $1,$2,$3":"$4"-"$5,$4,$5,unknown,homref,het,homalt,het+homalt}' > tmp1
 <br>
-_Replace spaces with tab_
+<br>
+##Replace spaces with tab
 awk -v OFS="\t" '$1=$1' tmp1 > tmp2
 <br>
-_Prepare a header_
+##Prepare a header
 echo -e "#CHR\tPOS\tID\tREF\tALT\tnumGT.Unknowns\tnumGT.HomRef\tnumGT.Het\tnumGT.HomAlt\tnumGT.(Het+HomAlt)" > header
 cat header tmp2 > infile.variant-genotypes.counts
 <br>
-_Clean the house_
+##Clean the house
 rm tmp1 tmp2
 <br>
-_Extract variants that have a genotype count equal or higher than a genotype count threshold_
+##Extract variants that have a genotype count equal or higher than a genotype count threshold
 awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > variant-list
 <br>
 <br>
