@@ -1,5 +1,9 @@
 # one-liners, frequently used commands in Bioinformatics
 
+**Markdown References**
+https://guides.github.com/features/mastering-markdown/
+https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
+
 **Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**
 ```Bash
 #!/bin/bash
