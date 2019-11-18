@@ -122,9 +122,6 @@ awk -v OFS="\t" '$1=$1' tmp1 > tmp2<br>
 echo -e "#CHR\tPOS\tID\tREF\tALT\tnumGT.Unknowns\tnumGT.HomRef\tnumGT.Het\tnumGT.HomAlt\tnumGT.(Het+HomAlt)" > header<br>
 cat header tmp2 > infile.variant-genotypes.counts<br>
 <br>
-##Clean the house<br>
-rm tmp1 tmp2<br>
-<br>
 ##Extract variants that have a genotype count equal or higher than a genotype count threshold<br>
 awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > variant-list<br>
 <br>
