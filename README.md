@@ -121,7 +121,8 @@ zgrep -v "^#" infile.vcf.gz | awk '{
 awk -v OFS="\t" '$1=$1' tmp1 > tmp2
 
 ##Prepare a header
-echo -e "#CHR\tPOS\tID\tREF\tALT\tnumGT.Unknowns\tnumGT.HomRef\tnumGT.Het\tnumGT.HomAlt\tnumGT.(Het+HomAlt)" > header<br>
+echo -e "#CHR\tPOS\tID\tREF\tALT\tnumGT.Unknowns\tnumGT.HomRef\tnumGT.Het \
+     \tnumGT.HomAlt\tnumGT.(Het+HomAlt)" > header<br>
 cat header tmp2 > infile.variant-genotypes.counts
 
 ##Extract variants that have a genotype count equal or higher than a genotype count threshold
