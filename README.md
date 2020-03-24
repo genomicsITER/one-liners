@@ -217,6 +217,15 @@ cat header tmp2 > infile.variant-genotypes.counts
 ##Extract variants that have a genotype count equal or higher than a genotype count threshold
 awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > variant-list
 
+##Count the lines of each file in a dir and get the sum of all lines
+Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
+find ${indir} -type f "*.selected-files" -print0 | wc -l --files0-from=-
+
+##Count the total number of lines in the selected files of a dir
+Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
+find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
+
+
 # End of script
 ```
 
