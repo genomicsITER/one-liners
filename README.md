@@ -194,7 +194,6 @@ In each line of your infile, split the line by ":" and the split again by genoty
 expected genotype values (./. for missing or untyped genotype; 0/0 for hom-ref; ref=alt for 
 hom-alt; and heterozygous for the rest of conditions: 1/0 or 0/1). Finally, show the count 
 of genotypes and, possible, the count of variant genotypes (Het+HomAlt).
-
 ```Bash
 #!/bin/bash
 zgrep -v "^#" infile.vcf.gz | awk '{
@@ -205,27 +204,46 @@ zgrep -v "^#" infile.vcf.gz | awk '{
     else if(GT[1]==GT[2]) {homalt++}
     else {het++}};
     print $1,$2,$3":"$4"-"$5,$4,$5,unknown,homref,het,homalt,het+homalt}' > tmp1
+# End of script
+```
 
-##Replace spaces with tab
+**Replace spaces with tab**
+```Bash
+#!/bin/bash
 awk -v OFS="\t" '$1=$1' tmp1 > tmp2
+# End of script
+```
 
-##Prepare a header
+**Prepare a header**
+```Bash
+#!/bin/bash
 echo -e "#CHR\tPOS\tID\tREF\tALT\tnumGT.Unknowns\tnumGT.HomRef\tnumGT.Het \
      \tnumGT.HomAlt\tnumGT.(Het+HomAlt)" > header<br>
 cat header tmp2 > infile.variant-genotypes.counts
-
-##Extract variants that have a genotype count equal or higher than a genotype count threshold
-awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > variant-list
-
-##Count the lines of each file in a dir and get the sum of all lines
-Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
-find ${indir} -type f "*.selected-files" -print0 | wc -l --files0-from=-
-
-##Count the total number of lines in the selected files of a dir
-Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
-find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
-
-
 # End of script
 ```
+
+**Extract variants that have a genotype count equal or higher than a genotype count threshold**
+```Bash
+#!/bin/bash
+awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > variant-list
+# End of script
+```
+
+**Count the lines of each file in a dir and get the sum of all lines**
+Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
+```Bash
+#!/bin/bash
+find ${indir} -type f "*.selected-files" -print0 | wc -l --files0-from=-
+# End of script
+```
+
+**Count the total number of lines in the selected files of a dir**
+Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
+```Bash
+#!/bin/bash
+find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
+# End of script
+```
+
 
