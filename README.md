@@ -234,7 +234,7 @@ awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > varia
 Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
 ```Bash
 #!/bin/bash
-find ${indir} -type f "*.selected-files" -print0 | wc -l --files0-from=-
+find ${indir} -type f -name "*.selected-files" -print0 | wc -l --files0-from=-
 # End of script
 ```
 
