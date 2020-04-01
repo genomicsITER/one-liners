@@ -246,4 +246,28 @@ find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
 # End of script
 ```
 
+**Grab the body of a file excluding the header**
+```Bash
+#!/bin/bash
+tail -n +2 ${infile} > file-without-header
+# End of script
+```
+
+**Count number of lines in a file**
+```Bash
+#!/bin/bashwc -l ${infile}
+# End of script
+```
+
+**Count number of columns in a file**
+```Bash
+#!/bin/bash
+head -n 1 ${infile} | awk '{print NF}'
+#Or
+awk '{print NF; exit}' ${infile}
+# End of script
+```
+
+
+
 
