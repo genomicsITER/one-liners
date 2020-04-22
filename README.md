@@ -268,6 +268,12 @@ awk '{print NF; exit}' ${infile}
 # End of script
 ```
 
+**Replace many spaces with single tabs, and specially the leading spaces of a PLINK '*.frq' file**
+```Bash
+#!/bin/bash
+sed 's/ \+/\t/g' ${infile} | sed -e 's/^[\t]*//' >${infile}.no-trailing-spaces.tabs
+# End of script
+```
 
 
 
