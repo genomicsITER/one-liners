@@ -283,7 +283,7 @@ sed 's/0|0/0/g' test | sed 's/0|1/1/g' | sed 's/1|0/1/g' | sed 's/1|1/2/g
 ```
 
 **Convert a VCF into a table of variants combining PERL and GATK4 VariantsToTable**
-Credit: https://gatkforums.broadinstitute.org/gatk/profile/dobenshain
+Credits: https://gatkforums.broadinstitute.org/gatk/profile/ericminikel && https://gatkforums.broadinstitute.org/gatk/profile/dobenshain
 ```Bash
 #!/bin/bash
 # Grab INFO tags 
