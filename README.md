@@ -341,7 +341,7 @@ gatk VariantsToTable \
 -GF DP \
 -GF GQ \
 -GF PL \
---output H-All-exomes.ANNOVAR.snpEff.GATK.annotations.hg19.reheaded.Variants-to-Table.txt
+--output outfile.Variants-to-Table.txt
 # End of script
 ```
 
