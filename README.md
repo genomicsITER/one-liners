@@ -286,10 +286,16 @@ sed 's/0|0/0/g' test | sed 's/0|1/1/g' | sed 's/1|0/1/g' | sed 's/1|1/2/g
 Credits: https://gatkforums.broadinstitute.org/gatk/profile/ericminikel && https://gatkforums.broadinstitute.org/gatk/profile/dobenshain
 ```Bash
 #!/bin/bash
+
 # Grab INFO tags 
 zcat infile.vcf.gz | perl -ne '/^.*INFO.*ID=([a-zA-Z0-9_]+),/ && print "-F $1 \\ "' | uniq
+# Example of output (allele frequencies from gnomAD):
+-F AC -F AF -F AF_afr -F AF_amr -F AF_asj \
+
 # Grab FORMAT tags
 zcat infile.vcf.gz | perl -ne '/^.*FORMAT.*ID=([a-zA-Z0-9_]+),/ && print "-GF $1 \\ "' | uniq
+# Example of output:
+-GF AD \ -GF DP \ -GF GQ \ -GF GT \ -GF MIN_DP \ -GF PGT \ -GF PID \ -GF PL \ -GF RGQ \ -GF SB \
 
 # Complex example using GATK4 (notice that INFO tags are written after "-F" and FORMAT tags are written after "GF").
 # GATK3.8 does not produce a proper header in the output and does not allow for a filtering control as GATK4.
