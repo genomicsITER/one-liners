@@ -302,6 +302,9 @@ zcat infile.vcf.gz | perl -ne '/^.*FORMAT.*ID=([a-zA-Z0-9_]+),/ && print "-GF $1
 # Complex example using GATK4 (notice that INFO tags are written after "-F" and FORMAT tags are written after "GF").
 # GATK3.8 does not produce a proper header in the output and does not allow for a filtering control as GATK4.
 
+module load java-jre/1.8.0_77
+module load gatk/4.1.4.0
+
 gatk VariantsToTable \
 --variant ${infile} \
 --show-filtered true \
