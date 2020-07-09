@@ -347,4 +347,25 @@ gatk VariantsToTable \
 # End of script
 ```
 
+**Convert a VCF into a table of variants combining PERL and GATK4 VariantsToTable**
+
+Credits: ANNOVAR, https://annovar.openbioinformatics.org/en/latest/user-guide/gene/
+
+```Bash
+#!/bin/bash
+
+module load annovar/18.04.16
+
+infile="${workdir}/infile.vcf"
+outfile="${workdir}/infile.ANNOVAR.out.avinput"
+
+convert2annovar.pl -format vcf4 ${infile} -outfile ${outfile} -allsample -withfreq -include
+
+infile="${workdir}/infile.ANNOVAR.out.avinput"
+outfile="${workdir}/infile.ANNOVAR.gene_annotation"
+humandb="..ANNOVAR/humandb/"
+
+annotate_variation.pl -out ${outfile} -build hg19 ${infile} ${humandb}
+# End of script
+```
 
