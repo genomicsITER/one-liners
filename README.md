@@ -353,13 +353,9 @@ Credits: ANNOVAR, https://annovar.openbioinformatics.org/en/latest/user-guide/ge
 
 The output generates two files starting from "infile.vcf": 'infile.ANNOVAR.gene_annotation.variant_function' and 'infile.ANNOVAR.gene_annotation.exonic_variant_function'
 
-Output "infile.ANNOVAR.gene_annotation.variant_function":
-The first column in the file output tells whether the variant hit exons or hit intergenic regions, or hit introns, or hit a non-coding RNA genes.
-If the variant is exonic/intronic/ncRNA, the second column gives the gene name (if multiple genes are hit, comma will be added between gene names); 
-if not, the second column will give the two neighboring genes and the distance to these neighboring genes.
+Output "infile.ANNOVAR.gene_annotation.variant_function". The first column in the file output tells whether the variant hit exons or hit intergenic regions, or hit introns, or hit a non-coding RNA genes. If the variant is exonic/intronic/ncRNA, the second column gives the gene name (if multiple genes are hit, comma will be added between gene names); if not, the second column will give the two neighboring genes and the distance to these neighboring genes.
 
-Output "infile.ANNOVAR.gene_annotation.exonic_variant_function":
-The second output file contains the amino acid changes as a result of the exonic variant.
+Output "infile.ANNOVAR.gene_annotation.exonic_variant_function". The second output file contains the amino acid changes as a result of the exonic variant.
 The exact format of the output below may change slightly between different versions of ANNOVAR.
 
 ```Bash
@@ -377,6 +373,9 @@ outfile="${workdir}/infile.ANNOVAR.gene_annotation"
 humandb="..ANNOVAR/humandb/"
 
 annotate_variation.pl -out ${outfile} -build hg19 ${infile} ${humandb}
+
+# Outputs two files: 'infile.ANNOVAR.gene_annotation.variant_function' and 'infile.ANNOVAR.gene_annotation.exonic_variant_function'
+
 # End of script
 ```
 
