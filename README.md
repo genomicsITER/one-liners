@@ -314,30 +314,27 @@ gatk VariantsToTable \
 -F ALT \
 -F QUAL \
 -F FILTER \
--F AC -F AF -F AF_afr -F AF_amr -F AF_asj \
--F AF_eas -F AF_female -F AF_fin -F AF_male -F AF_nfe -F AF_oth -F AF_popmax -F AF_raw -F AF_sas \
--F AN -F BA1 -F BP1 -F BP2 -F BP3 -F BP4 -F BP5 -F BP6 -F BP7 -F BS1 -F BS2 -F BS3 -F BS4 -F BaseQRankSum \
--F CADD_phred -F CADD_raw -F CADD_raw_rankscore -F CLNALLELEID -F CLNDISDB -F CLNDN -F  CLNREVSTAT -F CLNSIG \
--F ClippingRankSum -F DANN_rankscore -F DANN_score -F DB -F DP -F DS -F Eigen_coding_or_noncoding -F ExAC_AFR \
--F ExAC_ALL -F ExAC_AMR -F ExAC_EAS -F ExAC_FIN -F ExAC_NFE -F ExAC_OTH -F ExAC_SAS -F ExcessHet \
--F FATHMM_converted_rankscore -F FATHMM_pred -F FATHMM_score -F FS -F GTEx_V6_gene -F GTEx_V6_tissue \
--F GenoCanyon_score -F GenoCanyon_score_rankscore -F HaplotypeScore -F InbreedingCoeff -F InterVar_automated \
--F Interpro_domain -F LRT_converted_rankscore -F LRT_pred -F LRT_score -F MLEAC -F MLEAF -F MQ -F MQRankSum \
--F MetaLR_pred -F MetaLR_rankscore -F MetaLR_score -F MetaSVM_pred -F MetaSVM_rankscore -F MetaSVM_score \
--F MutationAssessor_pred -F MutationAssessor_score -F MutationAssessor_score_rankscore \
--F MutationTaster_converted_rankscore -F MutationTaster_pred -F MutationTaster_score -F NEGATIVE_TRAIN_SITE \
--F PM1 -F PM2 -F PM3 -F PM4 -F PM5 -F PM6 -F POSITIVE_TRAIN_SITE -F PP1 -F PP2 -F PP3 -F PP4 -F PP5 \
--F PROVEAN_converted_rankscore -F PROVEAN_pred -F PROVEAN_score -F PS1 -F PS2 -F PS3 -F PS4 -F PVS1 \
--F Polyphen2_HDIV_pred -F Polyphen2_HDIV_rankscore -F Polyphen2_HDIV_score -F Polyphen2_HVAR_pred \
--F Polyphen2_HVAR_rankscore -F Polyphen2_HVAR_score -F QD -F RAW_MQ -F ReadPosRankSum -F SIFT_converted_rankscore \
--F SIFT_pred -F SIFT_score -F SNPEFF_AMINO_ACID_CHANGE -F SNPEFF_CODON_CHANGE -F SNPEFF_EFFECT -F SNPEFF_EXON_ID \
--F SNPEFF_FUNCTIONAL_CLASS -F SNPEFF_GENE_BIOTYPE -F SNPEFF_GENE_NAME -F SNPEFF_IMPACT -F SNPEFF_TRANSCRIPT_ID \
--F SOR -F SiPhy_29way_logOdds -F SiPhy_29way_logOdds_rankscore -F VEST3_rankscore -F VEST3_score -F VQSLOD \
--F avsnp150 -F controls_AF_popmax -F culprit -F cytoBand -F integrated_confidence_value -F integrated_fitCons_score \
--F integrated_fitCons_score_rankscore -F non_cancer_AF_popmax -F non_neuro_AF_popmax -F non_topmed_AF_popmax \
--F phastCons100way_vertebrate -F phastCons100way_vertebrate_rankscore -F phastCons20way_mammalian \
--F phastCons20way_mammalian_rankscore -F phyloP100way_vertebrate -F phyloP100way_vertebrate_rankscore \
--F phyloP20way_mammalian -F phyloP20way_mammalian_rankscore \
+-F AAChange.refGene -F AC -F AF -F AF_afr -F AF_amr -F AF_asj -F AF_eas -F AF_female -F AF_fin -F AF_male -F AF_nfe -F AF_oth -F AF_popmax \
+-F AF_raw -F AF_sas -F AN -F BA1 -F BP1 -F BP2 -F BP3 -F BP4 -F BP5 -F BP6 -F BP7 -F BS1 -F BS2 -F BS3 -F BS4 -F BaseQRankSum -F CADD_phred \
+-F CADD_raw -F CADD_raw_rankscore -F CLNALLELEID -F CLNDISDB -F CLNDN -F CLNREVSTAT -F CLNSIG -F ClippingRankSum -F DANN_rankscore \
+-F DANN_score -F DB -F DP -F DS -F Eigen-PC-raw -F Eigen-raw -F Eigen_coding_or_noncoding -F ExAC_AFR -F ExAC_ALL -F ExAC_AMR -F ExAC_EAS \
+-F ExAC_FIN -F ExAC_NFE -F ExAC_OTH -F ExAC_SAS -F ExcessHet -F ExonicFunc.refGene -F FATHMM_converted_rankscore -F FATHMM_pred -F FATHMM_score \
+-F FS -F Func.refGene -F GERP++_RS -F GERP++_RS_rankscore -F GTEx_V6_gene -F GTEx_V6_tissue -F Gene.refGene -F GeneDetail.refGene \
+-F GenoCanyon_score -F GenoCanyon_score_rankscore -F HaplotypeScore -F InbreedingCoeff -F InterVar_automated -F Interpro_domain º
+-F LRT_converted_rankscore -F LRT_pred -F LRT_score -F M-CAP_pred -F M-CAP_rankscore -F M-CAP_score -F MLEAC -F MLEAF -F MQ -F MQRankSum \
+-F MetaLR_pred -F MetaLR_rankscore -F MetaLR_score -F MetaSVM_pred -F MetaSVM_rankscore -F MetaSVM_score -F MutationAssessor_pred \
+-F MutationAssessor_score -F MutationAssessor_score_rankscore -F MutationTaster_converted_rankscore -F MutationTaster_pred \
+-F MutationTaster_score -F NEGATIVE_TRAIN_SITE -F PM1 -F PM2 -F PM3 -F PM4 -F PM5 -F PM6 -F POSITIVE_TRAIN_SITE -F PP1 -F PP2 -F PP3 \
+-F PP4 -F PP5 -F PROVEAN_converted_rankscore -F PROVEAN_pred -F PROVEAN_score -F PS1 -F PS2 -F PS3 -F PS4 -F PVS1 -F Polyphen2_HDIV_pred \
+-F Polyphen2_HDIV_rankscore -F Polyphen2_HDIV_score -F Polyphen2_HVAR_pred -F Polyphen2_HVAR_rankscore -F Polyphen2_HVAR_score -F QD \
+-F RAW_MQ -F ReadPosRankSum -F SIFT_converted_rankscore -F SIFT_pred -F SIFT_score -F SNPEFF_AMINO_ACID_CHANGE -F SNPEFF_CODON_CHANGE \
+-F SNPEFF_EFFECT -F SNPEFF_EXON_ID -F SNPEFF_FUNCTIONAL_CLASS -F SNPEFF_GENE_BIOTYPE -F SNPEFF_GENE_NAME -F SNPEFF_IMPACT \
+-F SNPEFF_TRANSCRIPT_ID -F SOR -F SiPhy_29way_logOdds -F SiPhy_29way_logOdds_rankscore -F VEST3_rankscore -F VEST3_score -F VQSLOD \
+-F avsnp150 -F controls_AF_popmax -F culprit -F cytoBand -F fathmm-MKL_coding_pred -F fathmm-MKL_coding_rankscore -F fathmm-MKL_coding_score \
+-F integrated_confidence_value -F integrated_fitCons_score -F integrated_fitCons_score_rankscore -F non_cancer_AF_popmax -F non_neuro_AF_popmax \
+-F non_topmed_AF_popmax -F phastCons100way_vertebrate -F phastCons100way_vertebrate_rankscore -F phastCons20way_mammalian \
+-F phastCons20way_mammalian_rankscore -F phyloP100way_vertebrate -F phyloP100way_vertebrate_rankscore -F phyloP20way_mammalian \
+-F phyloP20way_mammalian_rankscore \
 -GF GT \
 -GF AD \
 -GF DP \
