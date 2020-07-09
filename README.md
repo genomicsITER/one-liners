@@ -323,7 +323,7 @@ gatk VariantsToTable \
 -F DANN_score -F DB -F DP -F DS -F Eigen-PC-raw -F Eigen-raw -F Eigen_coding_or_noncoding -F ExAC_AFR -F ExAC_ALL -F ExAC_AMR -F ExAC_EAS \
 -F ExAC_FIN -F ExAC_NFE -F ExAC_OTH -F ExAC_SAS -F ExcessHet -F ExonicFunc.refGene -F FATHMM_converted_rankscore -F FATHMM_pred -F FATHMM_score \
 -F FS -F Func.refGene -F GERP++_RS -F GERP++_RS_rankscore -F GTEx_V6_gene -F GTEx_V6_tissue -F Gene.refGene -F GeneDetail.refGene \
--F GenoCanyon_score -F GenoCanyon_score_rankscore -F HaplotypeScore -F InbreedingCoeff -F InterVar_automated -F Interpro_domain º
+-F GenoCanyon_score -F GenoCanyon_score_rankscore -F HaplotypeScore -F InbreedingCoeff -F InterVar_automated -F Interpro_domain \
 -F LRT_converted_rankscore -F LRT_pred -F LRT_score -F M-CAP_pred -F M-CAP_rankscore -F M-CAP_score -F MLEAC -F MLEAF -F MQ -F MQRankSum \
 -F MetaLR_pred -F MetaLR_rankscore -F MetaLR_score -F MetaSVM_pred -F MetaSVM_rankscore -F MetaSVM_score -F MutationAssessor_pred \
 -F MutationAssessor_score -F MutationAssessor_score_rankscore -F MutationTaster_converted_rankscore -F MutationTaster_pred \
