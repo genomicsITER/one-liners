@@ -351,9 +351,7 @@ gatk VariantsToTable \
 
 Credits: ANNOVAR, https://annovar.openbioinformatics.org/en/latest/user-guide/gene/
 
-The output generates two files starting from "infile.vcf":
-> infile.ANNOVAR.gene_annotation.variant_function
-> infile.ANNOVAR.gene_annotation.exonic_variant_function
+The output generates two files starting from "infile.vcf": 'infile.ANNOVAR.gene_annotation.variant_function' and 'infile.ANNOVAR.gene_annotation.exonic_variant_function'
 
 Output "infile.ANNOVAR.gene_annotation.variant_function":
 The first column in the file output tells whether the variant hit exons or hit intergenic regions, or hit introns, or hit a non-coding RNA genes.
