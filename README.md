@@ -343,7 +343,7 @@ gatk VariantsToTable \
 -GF DP \
 -GF GQ \
 -GF PL \
---output outfile.Variants-to-Table.txt
+--output ${infile}.Variants-to-Table.txt
 # End of script
 ```
 
