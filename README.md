@@ -396,7 +396,7 @@ bcftools norm -m -both infile.vcf.gz -Oz -o outfile.vcf.gz
 ```
 
 
-** Annotate the ID field of each variant in a VCF file using dbSNP database **
+**Annotate the ID field of each variant in a VCF file using dbSNP database**
 
 Source: http://samtools.github.io/bcftools/bcftools.html#annotate
 
@@ -406,8 +406,10 @@ Source: http://samtools.github.io/bcftools/bcftools.html#annotate
 module load htslib
 module load bcftools
 
-indir=".."
+# dbSNP database index tbi file should be place within the same folder
 dbsnp="../dbSNP/GCF_000001405.25.gz"
+
+indir=".."
 infile="${indir}/infile.vcf"
 outfile="${infile}.dbsnp.vcf"
 
