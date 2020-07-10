@@ -379,7 +379,8 @@ annotate_variation.pl -out ${outfile} -build hg19 ${infile} ${humandb}
 # End of script
 ```
 
-**Split multiallelic variants (MNPs) into biallelic variants **
+
+**Split multiallelic variants (MNPs) into biallelic variants**
 
 Source: http://samtools.github.io/bcftools/bcftools.html#norm
 
