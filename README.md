@@ -379,3 +379,46 @@ annotate_variation.pl -out ${outfile} -build hg19 ${infile} ${humandb}
 # End of script
 ```
 
+**Split multiallelic variants (MNPs) into biallelic variants **
+
+Source: http://samtools.github.io/bcftools/bcftools.html#norm
+
+SNPs and indels will be merged separately into two records.
+
+```Bash
+#!/bin/bash
+
+module load bcftools
+
+bcftools norm -m -both infile.vcf.gz -Oz -o outfile.vcf.gz
+
+# End of script
+```
+
+
+** Annotate the ID field of each variant in a VCF file using dbSNP database **
+
+Source: http://samtools.github.io/bcftools/bcftools.html#annotate
+
+```Bash
+#!/bin/bash
+
+module load htslib
+module load bcftools
+
+indir=".."
+dbsnp="../dbSNP/GCF_000001405.25.gz"
+infile="${indir}/infile.vcf"
+outfile="${infile}.dbsnp.vcf"
+
+# First, compress and tabix the VCF file
+bgzip -c ${infile} > ${infile}.gz
+tabix -p vcf ${infile}.gz
+
+# Then annotate the ID field
+bcftools annotate -c ID -a ${dbsnp} -o ${outfile} ${infile}.gz
+
+# End of script
+```
+
+
