@@ -425,3 +425,16 @@ bcftools annotate -c ID -a ${dbsnp} -o ${outfile} ${infile}.gz
 ```
 
 
+**Annotate the ID field of each variant in a VCF file using dbSNP database**
+
+Source: http://samtools.github.io/bcftools/bcftools.html#annotate
+
+```Bash
+#!/bin/bash
+
+# Get the union of variants from two files
+awk 'FNR==NR{a[$1];next}$1 on a' ${infile1} ${infile2} > ${union}
+
+# End of script
+```
+
