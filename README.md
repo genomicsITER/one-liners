@@ -438,3 +438,27 @@ awk 'FNR==NR{a[$1];next}$1 on a' ${infile1} ${infile2} > ${union}
 # End of script
 ```
 
+**Parse a VCF file and count the numner of HomRef, HomAlt, and Het genotypes **
+
+In each line, split the fields from the 10th column by "." (GT:DS:etc.).
+Then, split the "DS" but without using any delimiter... in other words, do not split.
+And then take the second field of the array, and assign it to DS variable.
+Then filter by DS value.
+From the sums "het+homalt" and "hethomref", we keep the minumum to filter out the variant afterwards.
+
+```Bash
+#!/bin/bash
+
+zgrep -v "^#" ${indir}/${infile} \
+| awk 'BEGIN{OFS="\t"} {
+ homref=0; het=0; homalt=0; for(i=10;i<=NF;i++) {
+  split($i,a,":"); split(a[2],DS);
+  if(DS[1]<=0.5) {homref++}
+  else if(DS[1]>1.5) {homalt++}
+  else {het++}};
+ if(het+homalt<het+homref) print $1,$2,$3,$4,$5,homref,het,homalt,het+homalt
+  else if(het+homalt>=het+homref) print $1,$2,$3,$4,$5,homref,het,homalt,het+homref}' > ${outdir}/${outfile}
+  
+# End of script
+```
+
