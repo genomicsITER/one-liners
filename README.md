@@ -438,13 +438,9 @@ awk 'FNR==NR{a[$1];next}$1 on a' ${infile1} ${infile2} > ${union}
 # End of script
 ```
 
-**Parse a VCF file and count the numner of HomRef, HomAlt, and Het genotypes **
+**Parse a VCF file and count the number of HomRef, HomAlt, and Het genotypes from dose data**
 
-In each line, split the fields from the 10th column by "." (GT:DS:etc.).
-Then, split the "DS" but without using any delimiter... in other words, do not split.
-And then take the second field of the array, and assign it to DS variable.
-Then filter by DS value.
-From the sums "het+homalt" and "hethomref", we keep the minumum to filter out the variant afterwards.
+In each line of a VCF file from Michigan Imputation Server (FORMAT field use to be GT:DS:GP), split the fields from the 10th column by "." (GT:DS:etc.). Then, split the "DS" but without using any delimiter... in other words, do not split. And then take the second field of the array, and assign it to DS variable. Then filter by DS value. From the sums "het+homalt" and "hethomref", we keep the minumum to filter out the variant afterwards.
 
 ```Bash
 #!/bin/bash
