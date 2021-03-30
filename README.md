@@ -458,3 +458,24 @@ zgrep -v "^#" ${indir}/${infile} \
 # End of script
 ```
 
+**Transposing the row-vector of individuals into a column-vector**
+
+```Bash
+#!/bin/bash
+
+awk '
+{ 
+    for (i=1; i<=NF; i++)  {
+        a[NR,i] = $i
+    }
+}
+NF>p { p = NF }
+END {    
+    for(j=1; j<=p; j++) {
+        str=a[1,j]
+        for(i=2; i<=NR; i++){
+            str=str"\t"a[i,j];
+        }
+        print j"->"str" MLDOSE" # Prepare a matrix with columns 1, 2, and 3 following probABEL specifications
+    }
+}' $output/individuals > $output/t_individuals
