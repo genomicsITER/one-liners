@@ -479,6 +479,7 @@ END {
         print j"->"str" MLDOSE" # Prepare a matrix with columns 1, 2, and 3 following probABEL specifications
     }
 }' $output/individuals > $output/t_individuals
+
 # End of script
 ```
 
