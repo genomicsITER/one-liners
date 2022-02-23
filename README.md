@@ -479,3 +479,16 @@ END {
         print j"->"str" MLDOSE" # Prepare a matrix with columns 1, 2, and 3 following probABEL specifications
     }
 }' $output/individuals > $output/t_individuals
+# End of script
+```
+
+**Change the sample name in a BAM header using SAMtools**
+
+```Bash
+#!/bin/bash
+
+# Define inbam and outbam files
+samtools view -H ${inbam} | sed "s/SM:[^\t]*/SM:new-sample-name/g" | samtools reheader - ${bamfile} > ${outbam}
+
+# End of script
+```
