@@ -138,6 +138,7 @@ awk -v OFS="\t" '$1=$1' infile > outfile
 **Add rs from INFO field (avsnp150) to ID column in a VCF**
 ```Bash
 #!/bin/bash
+
 cat infile | awk '
 BEGIN { FS=OFS="\t" }
 {
@@ -148,6 +149,7 @@ sub(/avsnp150=/, "", $3)
 }
 print
 }' > outfile
+
 # End of script
 ```
 
@@ -155,6 +157,7 @@ print
 **Remove duplicated lines in a file while keeping the original order**
 ```Bash
 #!/bin/bash
+
 awk '!visited[$0]++' infile > deduplicated_infile
 
 #Note: see https://iridakos.com/how-to/2019/05/16/remove-duplicate-lines-preserving-order-linux.html
@@ -162,6 +165,7 @@ awk '!visited[$0]++' infile > deduplicated_infile
 # keep the first ocurrence of number, sort using the number, and cut the second column; clever!):
 
 cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
+
 # End of script
 ```
 
@@ -169,11 +173,13 @@ cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 **Number of files per extension type in the current directory**
 ```Bash
 #!/bin/bash
+
 nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c \
     | sed 's/^ *//g' | sed 's/ /\t/g'; }
 
 # Note: run this code and then write "nfiletypes" at the prompt and will see the count of 
 # files per extension at the current directory.
+
 # End of script
 ```
 
@@ -181,7 +187,9 @@ nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c \
 **Parse file with AWK, sum column values in each line, and shows the result**
 ```Bash
 #!/bin/bash
+
 awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (i in a) print a[i] }' infile
+
 # End of script
 ```
 
@@ -196,6 +204,7 @@ hom-alt; and heterozygous for the rest of conditions: 1/0 or 0/1). Finally, show
 of genotypes and, possible, the count of variant genotypes (Het+HomAlt).
 ```Bash
 #!/bin/bash
+
 zgrep -v "^#" infile.vcf.gz | awk '{
     unknown=0; homref=0; het=0; homalt=0; for(i=10;i<=NF;i++) {
     split($i,a,":"); split(a[1],GT,"[/|]");
@@ -204,29 +213,36 @@ zgrep -v "^#" infile.vcf.gz | awk '{
     else if(GT[1]==GT[2]) {homalt++}
     else {het++}};
     print $1,$2,$3":"$4"-"$5,$4,$5,unknown,homref,het,homalt,het+homalt}' > tmp1
+    
 # End of script
 ```
 
 **Replace spaces with tab**
 ```Bash
 #!/bin/bash
+
 awk -v OFS="\t" '$1=$1' tmp1 > tmp2
+
 # End of script
 ```
 
 **Prepare a header**
 ```Bash
 #!/bin/bash
+
 echo -e "#CHR\tPOS\tID\tREF\tALT\tnumGT.Unknowns\tnumGT.HomRef\tnumGT.Het \
      \tnumGT.HomAlt\tnumGT.(Het+HomAlt)" > header<br>
 cat header tmp2 > infile.variant-genotypes.counts
+
 # End of script
 ```
 
 **Extract variants that have a genotype count equal or higher than a genotype count threshold**
 ```Bash
 #!/bin/bash
+
 awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > variant-list
+
 # End of script
 ```
 
@@ -234,7 +250,9 @@ awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > varia
 Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
 ```Bash
 #!/bin/bash
+
 find ${indir} -type f -name "*.selected-files" -print0 | wc -l --files0-from=-
+
 # End of script
 ```
 
@@ -242,43 +260,56 @@ find ${indir} -type f -name "*.selected-files" -print0 | wc -l --files0-from=-
 Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
 ```Bash
 #!/bin/bash
+
 find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
+
 # End of script
 ```
 
 **Grab the body of a file excluding the header**
 ```Bash
 #!/bin/bash
+
 tail -n +2 ${infile} > file-without-header
+
 # End of script
 ```
 
 **Count number of lines in a file**
 ```Bash
-#!/bin/bashwc -l ${infile}
+#!/bin/bash
+
+wc -l ${infile}
+
 # End of script
 ```
 
 **Count number of columns in a file**
 ```Bash
 #!/bin/bash
+
 head -n 1 ${infile} | awk '{print NF}'
 #Or
 awk '{print NF; exit}' ${infile}
 # End of script
+
 ```
 
 **Replace many spaces with single tabs, and specially the leading spaces of a PLINK '*.frq' file**
 ```Bash
 #!/bin/bash
+
 sed 's/ \+/\t/g' ${infile} | sed -e 's/^[\t]*//' >${infile}.no-trailing-spaces.tabs
+
 # End of script
 ```
 
 **Recode (0/0, 0/1, 1/0, 1/1) genotypes into (0,1,2) genotypes**
 ```Bash
 #!/bin/bash
+
 sed 's/0|0/0/g' test | sed 's/0|1/1/g' | sed 's/1|0/1/g' | sed 's/1|1/2/g
+
 # End of script
 ```
 
