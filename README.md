@@ -12,12 +12,14 @@
 **Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**
 ```Bash
 #!/bin/bash
+
 region="3:10000-11000"
 infile="ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz"
 outfile="1KGP.chr3.region"
 tabix -h ${infile} ${region} > ${outfile}.vcf
 bgzip -c ${outfile}.vcf > ${outfile}.vcf.gz
 tabix -p vcf ${outfile}.vcf.gz
+
 # End of script
 ```
 
@@ -25,7 +27,9 @@ tabix -p vcf ${outfile}.vcf.gz
 **Remove "chr" string in variants in a VCF**
 ```Bash
 #!/bin/bash
+
 awk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
+
 # End of script
 ```
 
@@ -33,7 +37,9 @@ awk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
 **Add "chr" string in variants in VCF**
 ```Bash
 #!/bin/bash
+
 awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.vcf
+
 # End of script
 ```
 
@@ -41,8 +47,10 @@ awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.v
 **Sort karyotipically a VCF (version 1)**
 ```Bash
 #!/bin/bash
+
 ##Notice that header must be removed at some point
 grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.vcf
+
 # End of script
 ```
 
@@ -50,7 +58,9 @@ grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.
 **Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text**
 ```Bash
 #!/bin/bash
+
 sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
+
 # End of script
 ```
 
@@ -58,7 +68,9 @@ sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 **Sort karyotypically a VCF (version 3): using vcf-sort (from vcftools)**
 ```Bash
 #!/bin/bash
+
 cat infile.vcf | vcf-sort --chromosomal-order > infile.sorted.vcf
+
 # End of script
 ```
 
@@ -66,7 +78,9 @@ cat infile.vcf | vcf-sort --chromosomal-order > infile.sorted.vcf
 **Sort karyotypically a VCF (version 4): using PICARD**
 ```Bash
 #!/bin/bash
+
 java -jar picard.jar SortVcf I=unsorted.infile.vcf O=sorted.infile.vcf
+
 # End of script
 ```
 
@@ -74,7 +88,9 @@ java -jar picard.jar SortVcf I=unsorted.infile.vcf O=sorted.infile.vcf
 **Replace spaces with a single tab**
 ```Bash
 #!/bin/bash
+
 sed 's/ \+/\t/g' infile > outfile
+
 # End of script
 ```
 
@@ -82,7 +98,9 @@ sed 's/ \+/\t/g' infile > outfile
 **Compute BAM coverage with BEDtools**
 ```Bash
 #!/bin/bash
+
 bedtools genomecov -ibam infile.bam -bg > coverage.txt
+
 # End of script
 ```
 
@@ -90,22 +108,28 @@ bedtools genomecov -ibam infile.bam -bg > coverage.txt
 **Find duplicated lines in a VCF matching the whole line**
 ```Bash
 #!/bin/bash
+
 awk ' !uniq[$0]++ ' infile.vcf
+
 # End of script
 ```
 
 **Find duplicated lines in a VCF matching files 1, 2, and 5**
 ```Bash
 #!/bin/bash
+
 awk ' !uniq[$1 FS $2 FS $5]++ ' infile.vcf
+
 # End of script
 ```
 
 **Find a line by a field on it, delete it, and save the result**
 ```Bash
 #!/bin/bash
-string=abc<br>
+
+string=abc
 grep -v $string infile > outfile
+
 # End of script
 ```
 
@@ -113,6 +137,7 @@ grep -v $string infile > outfile
 **Count the number of mapped reads for each read in PE reads**
 ```Bash
 #!/bin/bash
+
 samtools view -F 0x40 infile.bam | cut -f1 | sort | uniq | wc -l
 
 #Left read: view the BAM content filtering by the provided SAM flags, cut the first column, 
@@ -123,6 +148,7 @@ samtools view -f 0x40 -F 0x4 infile.bam | cut -f1 | sort | uniq | wc -l
 samtools view -f 0x80 -F 0x4 infile.bam | cut -f1 | sort | uniq  | wc -l
 
 Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/SAMv1.pdf
+
 # End of script
 ```
 
@@ -130,7 +156,9 @@ Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/
 **Replace white spaces with tabs**
 ```Bash
 #!/bin/bash
+
 awk -v OFS="\t" '$1=$1' infile > outfile
+
 # End of script
 ```
 
@@ -375,6 +403,7 @@ gatk VariantsToTable \
 -GF GQ \
 -GF PL \
 --output ${infile}.Variants-to-Table.txt
+
 # End of script
 ```
 
