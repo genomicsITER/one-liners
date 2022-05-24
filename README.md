@@ -499,7 +499,8 @@ samtools view -H ${inbam} | sed "s/SM:[^\t]*/SM:new-sample-name/g" | samtools re
 ```Bash
 #!/bin/bash
 
-# Column3 in the input file is numeric (position) and will be used as the index to order the dataset
+# The header is the first line at the top of the file
+# Column3 in the input file is numeric (i.e. physical position) and will be used as the index to order the dataset
 awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
 
 # End of script
