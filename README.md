@@ -493,3 +493,14 @@ samtools view -H ${inbam} | sed "s/SM:[^\t]*/SM:new-sample-name/g" | samtools re
 
 # End of script
 ```
+
+**Sort a file using a certain numerical column while keeping the header at the top of the output**
+
+```Bash
+#!/bin/bash
+
+# Column3 in the input file is numeric (position) and will be used as the index to order the dataset
+awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
+
+# End of script
+```
