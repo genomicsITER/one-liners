@@ -566,7 +566,7 @@ awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
 # End of script
 ```
 
-** Convert a multisample columnar FASTA file into a multisample single-line FASTA file **
+**Convert a multisample columnar FASTA file into a multisample single-line FASTA file**
 
 ```Bash
 #!/bin/bash
@@ -574,7 +574,13 @@ awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
 infile="columnar.fasta"
 outfile="sinleline.fasta"
 
-awk '{if(NR==1) {print $0} else {if($0 ~ /^>/) {print "\n"$0} else {printf $0}}}' ${infile} > ${outfile}
+awk '{if(NR==1) 
+        {print $0} 
+        else 
+            {if($0 ~ /^>/) 
+                {print "\n"$0} 
+                    else 
+                        {printf $0}}}' ${infile} > ${outfile}
 
 # End of script
 ```
