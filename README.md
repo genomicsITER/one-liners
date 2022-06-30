@@ -587,3 +587,70 @@ else
 
 # End of script
 ```
+
+---
+
+**Convert BAM-to-FASTQ**
+
+> [Samtools: bam2fq](http://www.htslib.org/doc/1.1/samtools.html)
+
+```Bash
+inBAM="unsorted.bam"
+outBAM="sorted.bam"
+
+# Sort paired-end read alignment in BAM file (sort by name -n)
+samtools sort -n ${inBAM} -o ${outBAM}
+
+# Convert BAM to single FASTQ
+BAM="sorted.bam"
+FASTQ="output.fastq"
+samtools bam2fq ${BAM} > ${FASTQ}
+
+# Convert BAM into separate R1 and R2 FASTQ files
+BAM="sorted.bam"
+FASTQ1="sample_R1.fastq"
+FASTQ2="sample_R2.fastq"
+samtools fastq -@ 8 ${BAM} \
+    -1 ${FASTQ1} \
+    -2 ${FASTQ2} \
+    -0 /dev/null -s /dev/null -n
+```
+
+> [BEDtools: bamtofastq](https://bedtools.readthedocs.io/en/latest/content/tools/bamtofastq.html)
+
+```Bash
+BAM="input.bam"
+FASTQ1="forward.fastq"
+FASTQ2="reverse.fastq"
+bedtools bamtofastq -i ${BAM} -fq ${FASTQ1} -fq2 ${FASTQ2}
+```
+
+> [PICARD](http://broadinstitute.github.io/picard/command-line-overview.html#SamToFastq)
+```Bash
+BAM="input.bam"
+FASTQ1="forward.fastq"
+FASTQ2="reverse.fastq"
+java -Xmx2g -jar Picard-SamToFastq.jar \
+    I=${BAM} \
+    F=${FASTQ1} \
+    F2=${FASTQ2}
+
+#Note, F2 to get paired-end fastq files (R1 and R2)
+```
+
+> [bamtools](https://github.com/pezmaster31/bamtools)
+
+```Bash
+BAM="input.bam"
+FASTQ="output.fastq"
+bamtools convert -in ${BAM} --format fastq > ${FASTQ}
+
+# Split an interleaved FASTQ extracting reads ending with '/1' or '/2'
+FASTQ="interleaved.fastq"
+FASTQ1="forward.fastq"
+FASTQ2="reverse.fastq"
+cat ${FASTQ} | grep '^@.*/1$' -A 3 --no-group-separator > ${FASTQ1}
+cat ${FASTQ} | grep '^@.*/2$' -A 3 --no-group-separator > ${FASTQ2}
+```
+---
+
