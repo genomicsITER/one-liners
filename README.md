@@ -587,3 +587,23 @@ else
 
 # End of script
 ```
+
+**Extract a region of interest from a BAM file with SAMtools and index**
+
+```Bash
+#!/bin/bash
+# Use at HPC:
+module load xz/5.2.5/gcc htslib/1.12/gcc samtools/1.12/gcc
+
+#Define region
+region="chr2:163140072-163160072"
+indir="path-to-input-dir"
+infile="input-file"
+outfile="${infile}.${region}"
+#Extract Region of Interest
+samtools view -b -h ${indir}/${infile}.bam ${region} > ${indir}/${outfile}.bam
+#Index
+samtools index ${indir}/${outfile}.bam
+
+# End of script
+```
