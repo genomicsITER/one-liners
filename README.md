@@ -608,7 +608,7 @@ samtools index ${indir}/${outfile}.bam
 # End of script
 ```
 
-** Compress files without directory structure **
+**Compress files without directory structure**
 ```Bash
 #!/bin/bash
 
