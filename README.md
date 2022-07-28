@@ -616,3 +616,14 @@ zip -r -j *.zip
 
 # End of script
 ```
+**Shorten the current directory path on terminal**
+```Bash
+#See (1): https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html
+#See (2): https://unix.stackexchange.com/questions/381113/how-do-i-shorten-the-current-directory-path-shown-on-terminal
+#Open the shell, write this, and press ENTER:
+
+PS1='\u:\W\$ '
+
+#Done!
+# End of script
+```
