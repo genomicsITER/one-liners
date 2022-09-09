@@ -690,6 +690,8 @@ fi
 
 **Determine strand orientation and allele switch in a VCF**
 
+```Bash
+
 Source: http://samtools.github.io/bcftools/howtos/plugin.fixref.html
 
 Use BCFtools plugins.
