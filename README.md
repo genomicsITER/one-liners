@@ -632,6 +632,21 @@ PS1='\u:\W\$ '
 **Check if directory/file exist/does not exist**
 ```Bash
 
+##### DIRECTORIES
+
+#Check whether a directory exists or not.
+indir="your-directory"
+
+#Check if a directory exists
+if [ -d "${indir}" ]; then
+    echo "${indir} directory exists."
+fi
+
+#Check if a directory does not exist
+if [ ! -d "${indir}" ]; then
+    echo "${indir} directory does not exist."
+fi
+
 ##### FILES
 
 #Check whether ${infile} exists or not.
@@ -665,21 +680,6 @@ fi
 #With '&&'
 if [[ -f "${infile1}" && -f "${infile2}" ]]; then
     echo "${infile1} and ${infile2} exist."
-fi
-
-##### DIRECTORIES
-
-#Check whether a directory exists or not.
-indir="your-directory"
-
-#Check if a directory exists
-if [ -d "${indir}" ]; then
-    echo "${indir} directory exists."
-fi
-
-#Check if a directory does not exist
-if [ ! -d "${indir}" ]; then
-    echo "${indir} directory does not exist."
 fi
 
 # End of script
