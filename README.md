@@ -609,6 +609,7 @@ samtools index ${indir}/${outfile}.bam
 ```
 
 **Compress files without directory structure**
+
 ```Bash
 #!/bin/bash
 
@@ -618,6 +619,7 @@ zip -r -j *.zip
 ```
 
 **Shorten the current directory path on terminal**
+
 ```Bash
 #See (1): https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html
 #See (2): https://unix.stackexchange.com/questions/381113/how-do-i-shorten-the-current-directory-path-shown-on-terminal
@@ -630,6 +632,7 @@ PS1='\u:\W\$ '
 ```
 
 **Check if directory/file exist/does not exist**
+
 ```Bash
 
 ##### DIRECTORIES
@@ -681,6 +684,24 @@ fi
 if [[ -f "${infile1}" && -f "${infile2}" ]]; then
     echo "${infile1} and ${infile2} exist."
 fi
+
+# End of script
+```
+
+**Determine strand orientation and allele switch in a VCF**
+
+Source: http://samtools.github.io/bcftools/howtos/plugin.fixref.html
+
+Use BCFtools plugins.
+
+reference="path-to-reference-fasta"
+infile="infile.vcf.gz"
+
+#Stats to assess the number of REF allele mismatches and the number of non-biallelic sites
+bcftools +fixref ${infile} -- -f ${reference}
+
+#Check the reference allele mismatches
+bcftools norm --check-ref e -f /path/to/reference.fasta input.vcf.gz -Ou -o /dev/null
 
 # End of script
 ```
