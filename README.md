@@ -703,7 +703,7 @@ infile="infile.vcf.gz"
 bcftools +fixref ${infile} -- -f ${reference}
 
 #Check the reference allele mismatches
-bcftools norm --check-ref e -f /path/to/reference.fasta input.vcf.gz -Ou -o /dev/null
+bcftools norm --check-ref e -f ${reference} ${infile} -Ou -o /dev/null
 
 # End of script
 ```
