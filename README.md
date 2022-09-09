@@ -616,6 +616,7 @@ zip -r -j *.zip
 
 # End of script
 ```
+
 **Shorten the current directory path on terminal**
 ```Bash
 #See (1): https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html
@@ -625,5 +626,61 @@ zip -r -j *.zip
 PS1='\u:\W\$ '
 
 #Done!
+# End of script
+```
+
+**Check if directory/file exist/does not exist**
+```Bash
+
+##### FILES
+
+#Check whether ${infile} exists or not.
+infile="your-file"
+
+#Check if a file exists
+if [ -f "${infile}" ]; then
+    echo "${infile} exists."
+fi
+
+#Check is a file does not exist
+if [ ! -f "${infile}"]; then
+    echo "${infile} does not exist."
+fi
+
+#Together
+if [ -f "${infile}" ]; then
+    echo "${infile} exists."
+else 
+    echo "${infile} does not exist."
+fi
+
+#Check if multiple files exist
+#Use '-a' or '&&' together with [[
+
+#With '-a'
+if [ -f "${infile1}" -a -f "${infile2}" ]; then
+    echo "${infile1} and ${infile2} exist."
+fi
+
+#With '&&'
+if [[ -f "${infile1}" && -f "${infile2}" ]]; then
+    echo "${infile1} and ${infile2} exist."
+fi
+
+##### DIRECTORIES
+
+#Check whether a directory exists or not.
+indir="your-directory"
+
+#Check if a directory exists
+if [ -d "${indir}" ]; then
+    echo "${indir} directory exists."
+fi
+
+#Check if a directory does not exist
+if [ ! -d "${indir}" ]; then
+    echo "${indir} directory does not exist."
+fi
+
 # End of script
 ```
