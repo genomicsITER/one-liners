@@ -770,5 +770,29 @@ fi
 
 cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}' | grep "^3" | awk '{ print $2 }' > list123
 
+#cat list1 list2 list3 | sort -k1,1n | uniq -c
+#      2 1
+#      3 2
+#      3 3
+#      2 4
+#      2 5
+#      1 6
+#      1 7
+#      1 8
+
+#cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}'
+#2 1
+#3 2
+#3 3
+#2 4
+#2 5
+#1 6
+#1 7
+#1 8
+
+#cat list1233
+#2
+#3
+
 # End of script
 ```
