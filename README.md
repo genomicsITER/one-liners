@@ -707,3 +707,68 @@ bcftools norm --check-ref e -f ${reference} ${infile} -Ou -o /dev/null
 
 # End of script
 ```
+
+**Get the file with the smallest number of lines
+```Bash
+
+wc -l file1 > count1
+wc -l file2 > count2
+wc -l file3 > count3
+
+if [ ${count1} -lt ${count2} ] && [ ${count1} -lt ${count3} ]
+then
+    cod=1
+    count=${count1}
+    file="${infile1}"
+    echo "File number: ${cod}"
+    echo "Number of lines: "${count}
+elif [ ${count2} -lt ${count1} ] && [ ${count2} -lt ${count3} ]
+then
+    cod=2
+    count=${count2}
+    file="${infile2}"
+    echo "File number: ${cod}"
+    echo "Number of lines: "${count}
+else
+    cod=3
+    count=${count3}
+    file="${infile3}"
+    echo "File number: ${cod}"
+    echo "Number of lines: "${count}
+fi
+
+# End of script
+```
+
+**Get the shared positions by three lists**
+```Bash
+
+#cat list1
+#1
+#2
+#3
+#4
+
+#cat list2
+#1
+#2
+#3
+#4
+#5
+
+#cat list3
+#2
+#3
+#4
+
+# Cat list of positions
+# Then sort them
+# Count the number of duplicated lines
+# Trim any leading and trailing white spaces
+# Grab only the lines starting by 3 (3 lines duplicated)
+# Keep only the selected lines and save into 'list123' file
+
+cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}' | grep "^3" | awk '{ print $2 }' > list123
+
+# End of script
+```
