@@ -796,3 +796,12 @@ cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}' | grep "^3" 
 
 # End of script
 ```
+
+**Reredirect .out and .err outputs to a log file**
+```Bash
+
+./your-script.sh 2>&1 | tee -a log
+your-line-commands-here 2>&1 | tee -a log
+
+# End of script
+```
