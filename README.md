@@ -800,8 +800,10 @@ cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}' | grep "^3" 
 **Reredirect .out and .err outputs to a log file**
 ```Bash
 
+log="your-log-file"
+
 ./your-script.sh 2>&1 | tee -a log
-your-line-commands-here 2>&1 | tee -a log
+'your-line-commands-here' 2>&1 | tee -a ${log}
 
 # End of script
 ```
