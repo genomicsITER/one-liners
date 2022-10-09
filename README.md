@@ -815,3 +815,14 @@ bcftools view -i "%FILTER='PASS' | %FILTER='.'" infile.vcf.gz -Oz -o outfile.vcf
 
 # End of script
 ```
+
+**Check that a VCF is sorted (via indexing)**
+```Bash
+
+bgzip -c infile.vcf > infile.vcf.gz
+bcftools index -t -f infile.vcf.gz
+
+#If the latter command fails, the file is not sorted.
+
+# End of script
+```
