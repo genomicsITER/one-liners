@@ -826,3 +826,8 @@ bcftools index -t -f infile.vcf.gz
 
 # End of script
 ```
+
+**String Functions in GNU**
+
++ https://www.gnu.org/software/gawk/manual/html_node/String-Functions.html
+
