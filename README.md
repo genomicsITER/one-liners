@@ -807,3 +807,11 @@ log="your-log-file"
 
 # End of script
 ```
+
+**Filter a VCF file using certain values in the FILTER tag**
+```Bash
+
+bcftools view -i "%FILTER='PASS' | %FILTER='.'" infile.vcf.gz -Oz -o outfile.vcf.gz 
+
+# End of script
+```
