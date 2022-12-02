@@ -223,14 +223,18 @@ awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (
 
 
 **Count genotypes in a VCF imputed at Michigan Imputation Server**
+
 Based on script by tommycarstensen
+
 See: https://gatkforums.broadinstitute.org/gatk/discussion/5692/count-genotypes-per-position-in-a-multi-sample-vcf
+
 In each line of your infile, split the line by ":" and the split again by genotype delimiters 
 (unphased, "/"; phased, "|"). Then, split again the genotype field and assign its values 
 (REF, delimiter, and ALT) to GT awk-variable. Then, parse the GT variable according to the 
 expected genotype values (./. for missing or untyped genotype; 0/0 for hom-ref; ref=alt for 
 hom-alt; and heterozygous for the rest of conditions: 1/0 or 0/1). Finally, show the count 
 of genotypes and, possible, the count of variant genotypes (Het+HomAlt).
+
 ```Bash
 #!/bin/bash
 
