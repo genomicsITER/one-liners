@@ -833,6 +833,7 @@ bcftools index -t -f infile.vcf.gz
 
 
 **Sort numerically a list of files within a directory and save the list into a new file**
+Credits: https://stackoverflow.com/questions/13360925/sort-files-numerically-in-bash
 ```Bash
 
 #Search for and sort '*.chr22:a-b.Fst' files, where 'a' and 'b' are numbers (e.g., typically, a chromosome region)
