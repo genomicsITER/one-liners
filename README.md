@@ -7,8 +7,6 @@
 + https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
 
 
-
-
 **Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**
 ```Bash
 #!/bin/bash
@@ -114,6 +112,7 @@ awk ' !uniq[$0]++ ' infile.vcf
 # End of script
 ```
 
+
 **Find duplicated lines in a VCF matching files 1, 2, and 5**
 ```Bash
 #!/bin/bash
@@ -122,6 +121,7 @@ awk ' !uniq[$1 FS $2 FS $5]++ ' infile.vcf
 
 # End of script
 ```
+
 
 **Find a line by a field on it, delete it, and save the result**
 ```Bash
@@ -221,6 +221,7 @@ awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (
 # End of script
 ```
 
+
 **Count genotypes in a VCF imputed at Michigan Imputation Server**
 Based on script by tommycarstensen
 See: https://gatkforums.broadinstitute.org/gatk/discussion/5692/count-genotypes-per-position-in-a-multi-sample-vcf
@@ -245,6 +246,7 @@ zgrep -v "^#" infile.vcf.gz | awk '{
 # End of script
 ```
 
+
 **Replace spaces with tab**
 ```Bash
 #!/bin/bash
@@ -253,6 +255,7 @@ awk -v OFS="\t" '$1=$1' tmp1 > tmp2
 
 # End of script
 ```
+
 
 **Prepare a header**
 ```Bash
@@ -265,6 +268,7 @@ cat header tmp2 > infile.variant-genotypes.counts
 # End of script
 ```
 
+
 **Extract variants that have a genotype count equal or higher than a genotype count threshold**
 ```Bash
 #!/bin/bash
@@ -275,7 +279,9 @@ awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > varia
 ```
 
 **Count the lines of each file in a dir and get the sum of all lines**
-Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
+
+Credits: http://stackoverflow.com/questions/13727917/ddg#13728131
+
 ```Bash
 #!/bin/bash
 
@@ -284,8 +290,11 @@ find ${indir} -type f -name "*.selected-files" -print0 | wc -l --files0-from=-
 # End of script
 ```
 
+
 **Count the total number of lines in the selected files of a dir**
-Credit: http://stackoverflow.com/questions/13727917/ddg#13728131
+
+Credits: http://stackoverflow.com/questions/13727917/ddg#13728131
+
 ```Bash
 #!/bin/bash
 
@@ -293,6 +302,7 @@ find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
 
 # End of script
 ```
+
 
 **Grab the body of a file excluding the header**
 ```Bash
@@ -303,6 +313,7 @@ tail -n +2 ${infile} > file-without-header
 # End of script
 ```
 
+
 **Count number of lines in a file**
 ```Bash
 #!/bin/bash
@@ -312,6 +323,7 @@ wc -l ${infile}
 # End of script
 ```
 
+
 **Count number of columns in a file**
 ```Bash
 #!/bin/bash
@@ -320,8 +332,8 @@ head -n 1 ${infile} | awk '{print NF}'
 #Or
 awk '{print NF; exit}' ${infile}
 # End of script
-
 ```
+
 
 **Replace many spaces with single tabs, and specially the leading spaces of a PLINK '*.frq' file**
 ```Bash
@@ -332,6 +344,7 @@ sed 's/ \+/\t/g' ${infile} | sed -e 's/^[\t]*//' >${infile}.no-trailing-spaces.t
 # End of script
 ```
 
+
 **Recode (0/0, 0/1, 1/0, 1/1) genotypes into (0,1,2) genotypes**
 ```Bash
 #!/bin/bash
@@ -340,6 +353,7 @@ sed 's/0|0/0/g' test | sed 's/0|1/1/g' | sed 's/1|0/1/g' | sed 's/1|1/2/g
 
 # End of script
 ```
+
 
 **Convert a VCF into a table of variants combining PERL and GATK4 VariantsToTable**
 
@@ -406,6 +420,7 @@ gatk VariantsToTable \
 
 # End of script
 ```
+
 
 **RefSeq gene annotation with ANNOVAR from a VCF file**
 
@@ -498,6 +513,7 @@ awk 'FNR==NR{a[$1];next}$1 on a' ${infile1} ${infile2} > ${union}
 # End of script
 ```
 
+
 **Parse a VCF file and count the number of HomRef, HomAlt, and Het genotypes from dose data**
 
 In each line of a VCF file from Michigan Imputation Server (FORMAT field use to be GT:DS:GP), split the fields from the 10th column by "." (GT:DS:etc.). Then, split the "DS" but without using any delimiter... in other words, do not split. And then take the second field of the array, and assign it to DS variable. Then filter by DS value. From the sums "het+homalt" and "hethomref", we keep the minumum to filter out the variant afterwards.
@@ -517,6 +533,7 @@ zgrep -v "^#" ${indir}/${infile} \
   
 # End of script
 ```
+
 
 **Transposing the row-vector of individuals into a column-vector**
 
@@ -543,6 +560,7 @@ END {
 # End of script
 ```
 
+
 **Change the sample name in a BAM header using SAMtools**
 
 ```Bash
@@ -553,6 +571,7 @@ samtools view -H ${inbam} | sed "s/SM:[^\t]*/SM:new-sample-name/g" | samtools re
 
 # End of script
 ```
+
 
 **Sort a file using a certain numerical column while keeping the header at the top of the output**
 
@@ -565,6 +584,7 @@ awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
 
 # End of script
 ```
+
 
 **Convert a multisample columnar FASTA file into a multisample single-line FASTA file**
 
@@ -588,10 +608,12 @@ else
 # End of script
 ```
 
+
 **Extract a region of interest from a BAM file with SAMtools and index**
 
 ```Bash
 #!/bin/bash
+
 # Use at HPC:
 module load xz/5.2.5/gcc htslib/1.12/gcc samtools/1.12/gcc
 
@@ -608,6 +630,7 @@ samtools index ${indir}/${outfile}.bam
 # End of script
 ```
 
+
 **Compress files without directory structure**
 
 ```Bash
@@ -618,9 +641,12 @@ zip -r -j *.zip
 # End of script
 ```
 
+
 **Shorten the current directory path on terminal**
 
 ```Bash
+#!/bin/bash
+
 #See (1): https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html
 #See (2): https://unix.stackexchange.com/questions/381113/how-do-i-shorten-the-current-directory-path-shown-on-terminal
 #Open the shell, write this, and press ENTER:
@@ -631,9 +657,11 @@ PS1='\u:\W\$ '
 # End of script
 ```
 
+
 **Check if directory/file exist/does not exist**
 
 ```Bash
+#!/bin/bash
 
 ##### DIRECTORIES
 
@@ -652,7 +680,7 @@ fi
 
 ##### FILES
 
-#Check whether ${infile} exists or not.
+#Check whether file exists or not.
 infile="your-file"
 
 #Check if a file exists
@@ -663,6 +691,11 @@ fi
 #Check is a file does not exist
 if [ ! -f "${infile}"]; then
     echo "${infile} does not exist."
+fi
+
+#Check if a file is not empty
+if [ -s "${infile}" ]; then
+    echo "${infile} is not empty."
 fi
 
 #Together
@@ -688,9 +721,11 @@ fi
 # End of script
 ```
 
+
 **Determine strand orientation and allele switch in a VCF**
 
 ```Bash
+#!/bin/bash
 
 Source: http://samtools.github.io/bcftools/howtos/plugin.fixref.html
 
@@ -708,8 +743,11 @@ bcftools norm --check-ref e -f ${reference} ${infile} -Ou -o /dev/null
 # End of script
 ```
 
+
 **Get the file with the smallest number of lines
+
 ```Bash
+#!/bin/bash
 
 wc -l file1 > count1
 wc -l file2 > count2
@@ -740,8 +778,11 @@ fi
 # End of script
 ```
 
+
 **Get the shared positions by three lists**
+
 ```Bash
+#!/bin/bash
 
 #cat list1
 #1
@@ -797,8 +838,11 @@ cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}' | grep "^3" 
 # End of script
 ```
 
+
 **Reredirect .out and .err outputs to a log file**
+
 ```Bash
+#!/bin/bash
 
 log="your-log-file"
 
@@ -809,15 +853,20 @@ log="your-log-file"
 ```
 
 **Filter a VCF file using certain values in the FILTER tag**
+
 ```Bash
+#!/bin/bash
 
 bcftools view -i "%FILTER='PASS' | %FILTER='.'" infile.vcf.gz -Oz -o outfile.vcf.gz 
 
 # End of script
 ```
 
+
 **Check that a VCF is sorted (via indexing)**
+
 ```Bash
+#!/bin/bash
 
 bgzip -c infile.vcf > infile.vcf.gz
 bcftools index -t -f infile.vcf.gz
@@ -827,14 +876,18 @@ bcftools index -t -f infile.vcf.gz
 # End of script
 ```
 
+
 **String Functions in GNU**
 
 + https://www.gnu.org/software/gawk/manual/html_node/String-Functions.html
 
 
 **Sort numerically a list of files within a directory and save the list into a new file**
-Credits: https://stackoverflow.com/questions/13360925/sort-files-numerically-in-bash
+
+Source: https://stackoverflow.com/questions/13360925/sort-files-numerically-in-bash
+
 ```Bash
+#!/bin/bash
 
 #Search for and sort '*.chr22:a-b.Fst' files, where 'a' and 'b' are numbers (e.g., typically, a chromosome region)
 #Use '-v1' parameter:
