@@ -831,3 +831,14 @@ bcftools index -t -f infile.vcf.gz
 
 + https://www.gnu.org/software/gawk/manual/html_node/String-Functions.html
 
+
+**Sort numerically a list of files within a directory and save the list into a new file**
+```Bash
+
+#Search for and sort '*.chr22:a-b.Fst' files, where 'a' and 'b' are numbers (e.g., typically, a chromosome region)
+#Use '-v1' parameter
+ls -v1 "*.Fst" > ${list}
+
+# End of script
+```
+
