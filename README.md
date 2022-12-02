@@ -896,8 +896,9 @@ Source: https://stackoverflow.com/questions/13360925/sort-files-numerically-in-b
 #Search for and sort '*.chr22:a-b.Fst' files, where 'a' and 'b' are numbers (e.g., typically, a chromosome region)
 #Use '-v1' parameter:
 # -v: natural sort of (version) numbers within text
-# -1: list one file per lin
-    
+# -1: list one file per line
+
+#List files numerically and save the list into ${list}
 ls -v1 "*.Fst" > ${list}
 
 # End of script
