@@ -904,3 +904,14 @@ ls -v1 "*.Fst" > ${list}
 # End of script
 ```
 
+
+**Replace './.' or unknown genotypes with '0/0' or homozygous-reference genotypes**
+
+```Bash
+#!/bin/bash
+
+
+sed 's/\.\/\./0\/0/g' infile.vcf > infile.genotypes-replaced.vcf
+
+# End of script
+```
