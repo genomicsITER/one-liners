@@ -910,7 +910,6 @@ ls -v1 "*.Fst" > ${list}
 ```Bash
 #!/bin/bash
 
-
 sed 's/\.\/\./0\/0/g' infile.vcf > infile.with-replaced-genotypes.vcf
 
 # End of script
