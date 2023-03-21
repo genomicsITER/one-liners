@@ -922,16 +922,23 @@ Source: https://unix.stackexchange.com/questions/652523/replacing-the-seq-ids-of
 ```Bash
 #!/bin/bash
 
-#map file is a two column file as follows:
+#'map' file is a two column file as follows:
 #old-id1 [tab] new-id1
 #old-id2 [tab] new-id2
 #old-id3 [tab] new-id3
 #... [tab] ...
 
+#Example of 'map' file:
+#HUNSC_ITER_150265155	hCoV-19/Spain/CN-HUNSC_ITER_150265155/2022
+#HUNSC_ITER_900188949	hCoV-19/Spain/CN-HUNSC_ITER_900188949/2022
+#HUNSC_ITER_180111581	hCoV-19/Spain/CN-HUNSC_ITER_180111581/2022
+#HUNSC_ITER_402054223	hCoV-19/Spain/CN-HUNSC_ITER_402054223/2022
+#...    ...
+
 #Files:
-#map = a two-column file with old and new ids
-#old-ids.fasta = a FASTA file with old-ids
-#new-ids.fasta = a new FASTA file with new ids replacing old-ids
+#'map' = a two-column file with old and new ids
+#'old-ids.fasta' = a FASTA file with old-ids
+#'new-ids.fasta' = a new FASTA file with new ids replacing old-ids
 
 awk -F'\t' '
     NR==FNR { map[">"$1] = ">"$2; next }
