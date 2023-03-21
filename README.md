@@ -954,7 +954,7 @@ awk -F'\t' '
     { print }
 ' map old-ids.fasta > new-ids.fasta
 
-#Output:
+#Example of outpit in 'new-ids.fasta' file:
 #>hCoV-19/Spain/CN-HUNSC_ITER_150265155/2022
 #TCTTGTAGATCTGTTCTCTAAACGAACTTTAAAAT...
 #>hCoV-19/Spain/CN-HUNSC_ITER_900188949/2022
