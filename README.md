@@ -977,7 +977,8 @@ awk -F'\t' '
 # groups of matches. With the -o or --only-matching option, 
 # this has no effect and a warning is given.
     
-#Grep a multisample linear FASTA file witn '-A' and get rid of the annoying '--' lines when multiple matches are found
+#Grep a multisample linear FASTA file witn '-A' and get rid of the annoying
+#'--' lines when multiple matches are found
 grep -A 1 --no-group-separator -Fwf query.ids multisample.linear.fna > out.fna
 
 #Or alterantively clean the output avoind the '--' lines
