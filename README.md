@@ -970,12 +970,12 @@ awk -F'\t' '
 ```Bash
 #!/bin/bash
 
-# From 'man grep':
-#
-#-A NUM
-# Places a line containing a group separator (--) between contiguous
-# groups of matches. With the -o or --only-matching option, 
-# this has no effect and a warning is given.
+# According to 'man grep':
+#-A NUM, --after-context=NUM
+#        Print NUM  lines  of  trailing  context  after  matching  lines.
+#        Places   a  line  containing  a  group  separator  (--)  between
+#        contiguous groups of matches.  With the  -o  or  --only-matching
+#        option, this has no effect and a warning is given.
     
 #Grep a multisample linear FASTA file witn '-A' and get rid of the annoying
 #'--' lines when multiple matches are found
