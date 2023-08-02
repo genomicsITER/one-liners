@@ -981,7 +981,7 @@ awk -F'\t' '
 #'--' lines when multiple matches are found
 grep -A 1 --no-group-separator -Fwf query.ids multisample.linear.fna > out.fna
 
-#Or alterantively clean the output avoind the '--' lines
+#Or alternatively clean the output avoind the '--' lines
 my-grep-command | sed '/^--$/d'
 
 # End of script
