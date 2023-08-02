@@ -970,7 +970,7 @@ awk -F'\t' '
 ```Bash
 #!/bin/bash
 
-# From 'man grep:
+# From 'man grep':
 #
 #-A NUM
 # Places a line containing a group separator (--) between contiguous
