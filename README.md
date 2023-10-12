@@ -998,7 +998,7 @@ Source: https://stackoverflow.com/questions/9713104/loop-over-tuples-in-bash
 #Instead of nesting two for-loops (one for population and one for number of individuals 
 #within the selected population), define an array of tuples with two elements each.
 
-for tuple in "CAN 100" "NAF 121" "IBS 106"
+for tuple in "CEU 100" "IBS 121" "GBR 106"
 do
 # convert the "tuple" into the param args $1 $2...
 set -- ${tuple} 
