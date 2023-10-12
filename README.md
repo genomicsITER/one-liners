@@ -986,3 +986,29 @@ my-grep-command | sed '/^--$/d'
 
 # End of script
 ```
+
+**Iterate over a list of elements**
+
+Source: https://stackoverflow.com/questions/9713104/loop-over-tuples-in-bash
+
+```Bash
+#!/bin/bash
+
+for tuple in "CAN 100" "NAF 121" "IBS 106"
+do
+# convert the "tuple" into the param args $1 $2...
+set -- ${tuple} 
+pop=${1}
+n=${2}
+done
+
+#Alternatively, define explicitely the separator using IFS
+for tuple in CEU,100 IBS,121 GBR,106
+do 
+IFS=',' read -a strarr <<< "${tuple}"
+pop=${strarr[0]}
+n=${strarr[1]}
+done
+
+# End of script
+```
