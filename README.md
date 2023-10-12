@@ -1006,7 +1006,7 @@ pop=${1}
 n=${2}
 done
 
-#Alternatively, define explicitely the separator using IFS
+#Alternatively, define explicitely the separator between tuple values using IFS
 for tuple in CEU,100 IBS,121 GBR,106
 do 
 IFS=',' read -a strarr <<< "${tuple}"
