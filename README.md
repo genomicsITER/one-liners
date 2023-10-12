@@ -991,12 +991,12 @@ my-grep-command | sed '/^--$/d'
 
 Source: https://stackoverflow.com/questions/9713104/loop-over-tuples-in-bash
 
+```Bash
+#!/bin/bash
+
 #Example:
 #Instead of nesting two for-loops (one for population and one for number of individuals 
 #within the selected population), define an array of tuples with two elements each.
-
-```Bash
-#!/bin/bash
 
 for tuple in "CAN 100" "NAF 121" "IBS 106"
 do
