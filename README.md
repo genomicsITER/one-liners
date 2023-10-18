@@ -748,7 +748,7 @@ bcftools norm --check-ref e -f ${reference} ${infile} -Ou -o /dev/null
 ```
 
 
-**Get the file with the smallest number of lines
+**Get the file with the smallest number of lines**
 
 ```Bash
 #!/bin/bash
