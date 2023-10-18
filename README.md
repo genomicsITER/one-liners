@@ -10,7 +10,7 @@
 <!-- ------------------ SECTION ------------------ -->
 <p align="left">
   <a href="https://github.com/genomicsITER/one-liners" title="Instituto Tecnológico y de Energ&iacute;as Renovables (ITER) / Institute of Technology and Renewable Energy (ITER)">
-    <img src="https://github.com/genomicsITER/one-liners/blob/main/images/logos_GH.png" width="auto" /> 
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/ITER_logo.png" width="auto" /> 
       </a>
 </p>
 
