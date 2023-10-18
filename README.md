@@ -1,5 +1,20 @@
 <a name="inicio"></a>
-# one-liners, frequently used commands in Bioinformatics
+
+<!-- ------------------ HEADER ------------------ -->
+<!-- Developed and maintained by Genomics Division
+<!-- of the Institute of Technology an Renewable Energy (ITER)
+<!-- Tenerife, Canary Islands, SPAIN
+<!-- See the "Contact us" section to collaborate with us to growth
+<!-- this repository. ;=)
+
+<!-- ------------------ SECTION ------------------ -->
+<p align="left">
+  <a href="https://github.com/genomicsITER/one-liners" title="Instituto Tecnológico y de Energ&iacute;as Renovables (ITER) / Institute of Technology and Renewable Energy (ITER)">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/ITER_logo.png" width="auto" /> 
+      </a>
+</p>
+
+# One-liners, frequently used commands in Bioinformatics
 
 **Markdown References**
 
