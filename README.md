@@ -1019,6 +1019,8 @@ done
 
 **Iterate over a list of elements within a tuple**
 
+Source: https://www.biostars.org/p/180894/
+
 ```Bash
 #!/bin/bash
 
