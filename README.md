@@ -1017,7 +1017,7 @@ done
 # End of script
 ```
 
-**Iterate over a list of elements within a tuple**
+**Annotate fields (AF, AC, MAF, etc.) in a VCF**
 
 Source: https://www.biostars.org/p/180894/
 
