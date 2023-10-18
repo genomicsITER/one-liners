@@ -1016,3 +1016,16 @@ done
 
 # End of script
 ```
+
+**Iterate over a list of elements within a tuple**
+
+```Bash
+#!/bin/bash
+
+infile="in.vcf"
+outfile="out.vcf"
+
+bcftools +fill-tags ${infile}  -- -t AF,AC,MAF > ${outfile}
+
+# End of script
+```
