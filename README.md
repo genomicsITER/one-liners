@@ -85,6 +85,7 @@
 <li><a href="#code55">Iterate over a list of elements within a tuple</li></a>
 <li><a href="#code56">Annotate fields (AF, AC, MAF, etc.) in a VCF</li></a>
 <li><a href="#code57">Concatenate VCF files into a single-all-chrs VCF file</li></a>
+<li><a href="#code58">Monitor processes in your HPC (squeue, sacct, etc.)</li></a>
 </details>
 
 
@@ -1360,6 +1361,25 @@ cat vcf.gz.list
 
 #Concatenate VCF files into a single-all-chrs VCF file
 bcftools concat -f vcf.gz.list -Oz -o all-chrs-VCF.vcf.gz 
+
+# End of script
+```
+
+<hr>
+
+<a name="#code58"></a>
+
+**Monitor processes in your HPC (squeue, sacct, etc.)**
+
+```Bash
+#!/bin/bash
+
+#Use the shell and connect to your HPC running SLURM
+#Example1: monitor partitions and jobs
+watch squeue
+
+#Example2: monitor running jobs and subjobs
+watch sacct
 
 # End of script
 ```
