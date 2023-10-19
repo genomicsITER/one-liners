@@ -91,7 +91,7 @@
 
 <hr>
 
-<a name="#code1"></a>
+<a name="code1"></a>
 
 **Select region from 1KGP chr.vcf.gz, extract, compress, and tabix**
 
@@ -111,7 +111,7 @@ tabix -p vcf ${outfile}.vcf.gz
 
 <hr>
 
-<a name="#code2"></a>
+<a name="code2"></a>
 
 **Remove "chr" string in variants in a VCF**
 ```Bash
@@ -125,7 +125,7 @@ awk '{gsub(/^chr/,""); print}' infile.vcf > infile.no_chr.vcf
 
 <hr>
 
-<a name="#code3"></a>
+<a name="code3"></a>
 
 **Add "chr" string in variants in VCF**
 ```Bash
@@ -139,7 +139,7 @@ awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' infile.no_chr.vcf > infile.v
 
 <hr>
 
-<a name="#code4"></a>
+<a name="code4"></a>
 
 **Sort karyotipically a VCF (version 1)**
 ```Bash
@@ -154,7 +154,7 @@ grep '^#' in.vcf > out.vcf && grep -v '^#' in.vcf | sort -V -k1,1 -k2,2n >> out.
 
 <hr>
 
-<a name="#code5"></a>
+<a name="code5"></a>
 
 **Sort karyotypically a VCF (version 2). Use '-V', natural sort of (version) numbers within text**
 ```Bash
@@ -168,7 +168,7 @@ sort -V -k1,1 -k2,2n infile.vcf > outfile.vcf
 
 <hr>
 
-<a name="#code6"></a>
+<a name="code6"></a>
 
 **Sort karyotypically a VCF (version 3): using vcf-sort (from vcftools)**
 ```Bash
@@ -182,7 +182,7 @@ cat infile.vcf | vcf-sort --chromosomal-order > infile.sorted.vcf
 
 <hr>
 
-<a name="#code7"></a>
+<a name="code7"></a>
 
 **Sort karyotypically a VCF (version 4): using PICARD**
 ```Bash
@@ -196,7 +196,7 @@ java -jar picard.jar SortVcf I=unsorted.infile.vcf O=sorted.infile.vcf
 
 <hr>
 
-<a name="#code8"></a>
+<a name="code8"></a>
 
 **Replace spaces with a single tab**
 ```Bash
@@ -210,7 +210,7 @@ sed 's/ \+/\t/g' infile > outfile
 
 <hr>
 
-<a name="#code9"></a>
+<a name="code9"></a>
 
 **Compute BAM coverage with BEDtools**
 ```Bash
@@ -224,7 +224,7 @@ bedtools genomecov -ibam infile.bam -bg > coverage.txt
 
 <hr>
 
-<a name="#code10"></a>
+<a name="code10"></a>
 
 **Find duplicated lines in a VCF matching the whole line**
 ```Bash
@@ -238,7 +238,7 @@ awk ' !uniq[$0]++ ' infile.vcf
 
 <hr>
 
-<a name="#code11"></a>
+<a name="code11"></a>
 
 **Find duplicated lines in a VCF matching files 1, 2, and 5**
 ```Bash
@@ -252,7 +252,7 @@ awk ' !uniq[$1 FS $2 FS $5]++ ' infile.vcf
 
 <hr>
 
-<a name="#code12"></a>
+<a name="code12"></a>
 
 **Find a line by a field on it, delete it, and save the result**
 ```Bash
@@ -267,7 +267,7 @@ grep -v $string infile > outfile
 
 <hr>
 
-<a name="#code13"></a>
+<a name="code13"></a>
 
 **Count the number of mapped reads for each read in PE reads**
 ```Bash
@@ -290,7 +290,7 @@ Note: for flags information, see page 5 of https://samtools.github.io/hts-specs/
 
 <hr>
 
-<a name="#code14"></a>
+<a name="code14"></a>
 
 **Replace white spaces with tabs**
 ```Bash
@@ -304,7 +304,7 @@ awk -v OFS="\t" '$1=$1' infile > outfile
 
 <hr>
 
-<a name="#code15"></a>
+<a name="code15"></a>
 
 **Add rs from INFO field (avsnp150) to ID column in a VCF**
 ```Bash
@@ -327,7 +327,7 @@ print
 
 <hr>
 
-<a name="#code16"></a>
+<a name="code16"></a>
 
 **Remove duplicated lines in a file while keeping the original order**
 ```Bash
@@ -347,7 +347,7 @@ cat -n infile | sort -uk2 | sort -nk1 | cut -f2-
 
 <hr>
 
-<a name="#code17"></a>
+<a name="code17"></a>
 
 **Number of files per extension type in the current directory**
 ```Bash
@@ -365,7 +365,7 @@ nfiletypes () { find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -c \
 
 <hr>
 
-<a name="#code18"></a>
+<a name="code18"></a>
 
 **Parse file with AWK, sum column values in each line, and shows the result**
 ```Bash
@@ -379,7 +379,7 @@ awk -F'[\t]' 'BEGIN{sum=0; OFS="\t"} { for (i=1;i<=NF;i++) a[i]+=$i } END{ for (
 
 <hr>
 
-<a name="#code19"></a>
+<a name="code19"></a>
 
 **Count genotypes in a VCF imputed at Michigan Imputation Server**
 
@@ -412,7 +412,7 @@ zgrep -v "^#" infile.vcf.gz | awk '{
 
 <hr>
 
-<a name="#code20"></a>
+<a name="code20"></a>
 
 **Replace spaces with tab**
 ```Bash
@@ -426,7 +426,7 @@ awk -v OFS="\t" '$1=$1' tmp1 > tmp2
 
 <hr>
 
-<a name="#code21"></a>
+<a name="code21"></a>
 
 **Prepare a header**
 ```Bash
@@ -442,7 +442,7 @@ cat header tmp2 > infile.variant-genotypes.counts
 
 <hr>
 
-<a name="#code22"></a>
+<a name="code22"></a>
 
 **Extract variants that have a genotype count equal or higher than a genotype count threshold**
 ```Bash
@@ -456,7 +456,7 @@ awk -F'[ ]' '{ if ($10 >= 5) print $3 }' infile.variant-genotypes.counts > varia
 
 <hr>
 
-<a name="#code23"></a>
+<a name="code23"></a>
 
 **Count the lines of each file in a dir and get the sum of all lines**
 
@@ -473,7 +473,7 @@ find ${indir} -type f -name "*.selected-files" -print0 | wc -l --files0-from=-
 
 <hr>
 
-<a name="#code24"></a>
+<a name="code24"></a>
 
 **Count the total number of lines in the selected files of a dir**
 
@@ -490,7 +490,7 @@ find ${indir} -type f -name "*.selected-files" -exec cat {} + | wc -l
 
 <hr>
 
-<a name="#code25"></a>
+<a name="code25"></a>
 
 **Grab the body of a file excluding the header**
 ```Bash
@@ -504,7 +504,7 @@ tail -n +2 ${infile} > file-without-header
 
 <hr>
 
-<a name="#code26"></a>
+<a name="code26"></a>
 
 **Count number of lines in a file**
 ```Bash
@@ -518,7 +518,7 @@ wc -l ${infile}
 
 <hr>
 
-<a name="#code27"></a>
+<a name="code27"></a>
 
 **Count number of columns in a file**
 ```Bash
@@ -533,7 +533,7 @@ awk '{print NF; exit}' ${infile}
 
 <hr>
 
-<a name="#code28"></a>
+<a name="code28"></a>
 
 **Replace many spaces with single tabs, and specially the leading spaces of a PLINK '*.frq' file**
 ```Bash
@@ -547,7 +547,7 @@ sed 's/ \+/\t/g' ${infile} | sed -e 's/^[\t]*//' >${infile}.no-trailing-spaces.t
 
 <hr>
 
-<a name="#code29"></a>
+<a name="code29"></a>
 
 **Recode (0/0, 0/1, 1/0, 1/1) genotypes into (0,1,2) genotypes**
 ```Bash
@@ -561,7 +561,7 @@ sed 's/0|0/0/g' test | sed 's/0|1/1/g' | sed 's/1|0/1/g' | sed 's/1|1/2/g
 
 <hr>
 
-<a name="#code30"></a>
+<a name="code30"></a>
 
 **Convert a VCF into a table of variants combining PERL and GATK4 VariantsToTable**
 
@@ -632,7 +632,7 @@ gatk VariantsToTable \
 
 <hr>
 
-<a name="#code31"></a>
+<a name="code31"></a>
 
 **RefSeq gene annotation with ANNOVAR from a VCF file**
 
@@ -669,7 +669,7 @@ annotate_variation.pl -out ${outfile} -build hg19 ${infile} ${humandb}
 
 <hr>
 
-<a name="#code32"></a>
+<a name="code32"></a>
 
 **Split multiallelic variants (MNPs) into biallelic variants**
 
@@ -690,7 +690,7 @@ bcftools norm -m -both infile.vcf.gz -Oz -o outfile.vcf.gz
 
 <hr>
 
-<a name="#code33"></a>
+<a name="code33"></a>
 
 **Annotate the ID field of each variant in a VCF file using dbSNP database**
 
@@ -722,7 +722,7 @@ bcftools annotate -c ID -a ${dbsnp} -o ${outfile} ${infile}.gz
 
 <hr>
 
-<a name="#code34"></a>
+<a name="code34"></a>
 
 **Annotate the ID field of each variant in a VCF file using dbSNP database**
 
@@ -740,7 +740,7 @@ awk 'FNR==NR{a[$1];next}$1 on a' ${infile1} ${infile2} > ${union}
 
 <hr>
 
-<a name="#code35"></a>
+<a name="code35"></a>
 
 **Parse a VCF file and count the number of HomRef, HomAlt, and Het genotypes from dose data**
 
@@ -765,7 +765,7 @@ zgrep -v "^#" ${indir}/${infile} \
 
 <hr>
 
-<a name="#code36"></a>
+<a name="code36"></a>
 
 **Transposing the row-vector of individuals into a column-vector**
 
@@ -795,7 +795,7 @@ END {
 
 <hr>
 
-<a name="#code37"></a>
+<a name="code37"></a>
 
 **Change the sample name in a BAM header using SAMtools**
 
@@ -811,7 +811,7 @@ samtools view -H ${inbam} | sed "s/SM:[^\t]*/SM:new-sample-name/g" | samtools re
 
 <hr>
 
-<a name="#code38"></a>
+<a name="code38"></a>
 
 **Sort a file using a certain numerical column while keeping the header at the top of the output**
 
@@ -828,7 +828,7 @@ awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
 
 <hr>
 
-<a name="#code39"></a>
+<a name="code39"></a>
 
 **Convert a multisample columnar FASTA file into a multisample single-line FASTA file**
 
@@ -855,7 +855,7 @@ else
 
 <hr>
 
-<a name="#code40"></a>
+<a name="code40"></a>
 
 **Extract a region of interest from a BAM file with SAMtools and index**
 
@@ -881,7 +881,7 @@ samtools index ${indir}/${outfile}.bam
 
 <hr>
 
-<a name="#code41"></a>
+<a name="code41"></a>
 
 **Compress files without directory structure**
 
@@ -896,7 +896,7 @@ zip -r -j *.zip
 
 <hr>
 
-<a name="#code42"></a>
+<a name="code42"></a>
 
 **Shorten the current directory path on terminal**
 
@@ -916,7 +916,7 @@ PS1='\u:\W\$ '
 
 <hr>
 
-<a name="#code43"></a>
+<a name="code43"></a>
 
 **Check if directory/file exist/does not exist**
 
@@ -984,7 +984,7 @@ fi
 
 <hr>
 
-<a name="#code44"></a>
+<a name="code44"></a>
 
 **Determine strand orientation and allele switch in a VCF**
 
@@ -1010,7 +1010,7 @@ bcftools norm --check-ref e -f ${reference} ${infile} -Ou -o /dev/null
 
 <hr>
 
-<a name="#code45"></a>
+<a name="code45"></a>
 
 **Get the file with the smallest number of lines**
 
@@ -1049,7 +1049,7 @@ fi
 
 <hr>
 
-<a name="#code46"></a>
+<a name="code46"></a>
 
 **Get the shared positions by three lists**
 
@@ -1113,7 +1113,7 @@ cat list1 list2 list3 | sort -k1,1n | uniq -c | awk '{$1=$1;print}' | grep "^3" 
 
 <hr>
 
-<a name="#code47"></a>
+<a name="code47"></a>
 
 **Reredirect .out and .err outputs to a log file**
 
@@ -1131,7 +1131,7 @@ log="your-log-file"
 
 <hr>
 
-<a name="#code48"></a>
+<a name="code48"></a>
 
 **Filter a VCF file using certain values in the FILTER tag**
 
@@ -1146,7 +1146,7 @@ bcftools view -i "%FILTER='PASS' | %FILTER='.'" infile.vcf.gz -Oz -o outfile.vcf
 
 <hr>
 
-<a name="#code49"></a>
+<a name="code49"></a>
 
 **Check that a VCF is sorted (via indexing)**
 
@@ -1164,7 +1164,7 @@ bcftools index -t -f infile.vcf.gz
 
 <hr>
 
-<a name="#code50"></a>
+<a name="code50"></a>
 
 **String Functions in GNU**
 
@@ -1174,7 +1174,7 @@ bcftools index -t -f infile.vcf.gz
 
 <hr>
 
-<a name="#code51"></a>
+<a name="code51"></a>
 
 **Sort numerically a list of files within a directory and save the list into a new file**
 
@@ -1197,7 +1197,7 @@ ls -v1 "*.Fst" > ${list}
 
 <hr>
 
-<a name="#code52"></a>
+<a name="code52"></a>
 
 **Replace './.' or unknown genotypes with '0/0' or homozygous-reference genotypes**
 
@@ -1212,7 +1212,7 @@ sed 's/\.\/\./0\/0/g' infile.vcf > infile.with-replaced-genotypes.vcf
 
 <hr>
 
-<a name="#code53"></a>
+<a name="code53"></a>
 
 **Replace metadata ids in a FASTA file with new ids**
 
@@ -1267,7 +1267,7 @@ awk -F'\t' '
 
 <hr>
 
-<a name="#code54"></a>
+<a name="code54"></a>
 
 **Avoid the '--' group-separator in a grep output providing multiple matches**
 
@@ -1294,7 +1294,7 @@ my-grep-command | sed '/^--$/d'
 
 <hr>
 
-<a name="#code55"></a>
+<a name="code55"></a>
 
 **Iterate over a list of elements within a tuple**
 
@@ -1329,7 +1329,7 @@ done
 
 <hr>
 
-<a name="#code56"></a>
+<a name="code56"></a>
 
 **Annotate fields (AF, AC, MAF, etc.) in a VCF**
 
@@ -1348,7 +1348,7 @@ bcftools +fill-tags ${infile}  -- -t AF,AC,MAF > ${outfile}
 
 <hr>
 
-<a name="#code57"></a>
+<a name="code57"></a>
 
 **Concatenate VCF files into a single-all-chrs VCF file**
 
