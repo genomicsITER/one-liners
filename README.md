@@ -84,6 +84,7 @@
 <li><a href="#code54">Avoid the '--' group-separator in a grep output providing multiple matches</li></a>
 <li><a href="#code55">Iterate over a list of elements within a tuple</li></a>
 <li><a href="#code56">Annotate fields (AF, AC, MAF, etc.) in a VCF</li></a>
+<li><a href="#code57">Concatenate VCF files into a single-all-chrs VCF file</li></a>
 </details>
 
 
@@ -1162,7 +1163,7 @@ bcftools index -t -f infile.vcf.gz
 
 <hr>
 
-<a name="#code49"></a>
+<a name="#code50"></a>
 
 **String Functions in GNU**
 
@@ -1172,7 +1173,7 @@ bcftools index -t -f infile.vcf.gz
 
 <hr>
 
-<a name="#code50"></a>
+<a name="#code51"></a>
 
 **Sort numerically a list of files within a directory and save the list into a new file**
 
@@ -1195,7 +1196,7 @@ ls -v1 "*.Fst" > ${list}
 
 <hr>
 
-<a name="#code51"></a>
+<a name="#code52"></a>
 
 **Replace './.' or unknown genotypes with '0/0' or homozygous-reference genotypes**
 
@@ -1210,7 +1211,7 @@ sed 's/\.\/\./0\/0/g' infile.vcf > infile.with-replaced-genotypes.vcf
 
 <hr>
 
-<a name="#code52"></a>
+<a name="#code53"></a>
 
 **Replace metadata ids in a FASTA file with new ids**
 
@@ -1265,7 +1266,7 @@ awk -F'\t' '
 
 <hr>
 
-<a name="#code53"></a>
+<a name="#code54"></a>
 
 **Avoid the '--' group-separator in a grep output providing multiple matches**
 
@@ -1292,7 +1293,7 @@ my-grep-command | sed '/^--$/d'
 
 <hr>
 
-<a name="#code54"></a>
+<a name="#code55"></a>
 
 **Iterate over a list of elements within a tuple**
 
@@ -1327,7 +1328,7 @@ done
 
 <hr>
 
-<a name="#code55"></a>
+<a name="#code56"></a>
 
 **Annotate fields (AF, AC, MAF, etc.) in a VCF**
 
@@ -1343,3 +1344,23 @@ bcftools +fill-tags ${infile}  -- -t AF,AC,MAF > ${outfile}
 
 # End of script
 ```
+
+<hr>
+
+<a name="#code57"></a>
+
+**Concatenate VCF files into a single-all-chrs VCF file**
+
+```Bash
+#!/bin/bash
+
+#Prepare a list of individuals VCF.gz files sorted numerically
+ls -v1 *.vcf.gz > vcf.gz.list
+cat vcf.gz.list
+
+#Concatenate VCF files into a single-all-chrs VCF file
+bcftools concat -f vcf.gz.list -Oz -o all-chrs-VCF.vcf.gz 
+
+# End of script
+```
+
