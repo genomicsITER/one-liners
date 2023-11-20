@@ -86,6 +86,8 @@
 <li><a href="#code56">Annotate fields (AF, AC, MAF, etc.) in a VCF</li></a>
 <li><a href="#code57">Concatenate VCF files into a single-all-chrs VCF file</li></a>
 <li><a href="#code58">Monitor processes in your HPC (squeue, sacct, etc.)</li></a>
+<li><a href="#code59">List file recursively by last modification time</li></a>
+<li><a href="#code60">Remove extension from a file name</li></a>
 </details>
 
 
@@ -1380,6 +1382,34 @@ watch squeue
 
 #Example2: monitor running jobs and subjobs
 watch sacct
+
+# End of script
+```
+
+<a name="code59"></a>
+
+**List file recursively by last modification time**
+
+```Bash
+#!/bin/bash
+
+ls -Rt
+
+# End of script
+```
+
+<a name="code60"></a>
+
+**Remove extension from a file name**
+
+```Bash
+#!/bin/bash
+
+filename="basename.ext"
+
+n=${filename%.*}
+
+echo ${n}`
 
 # End of script
 ```
