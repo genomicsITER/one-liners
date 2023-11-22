@@ -1386,6 +1386,8 @@ watch sacct
 # End of script
 ```
 
+<hr>
+
 <a name="code59"></a>
 
 **List file recursively by last modification time**
@@ -1397,6 +1399,8 @@ ls -Rt
 
 # End of script
 ```
+
+<hr>
 
 <a name="code60"></a>
 
@@ -1413,4 +1417,7 @@ echo ${n}`
 
 # End of script
 ```
+
+<hr>
+
 
