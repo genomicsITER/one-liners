@@ -1430,7 +1430,8 @@ echo ${n}`
 #Open a shell and run this:
 touch ~/Templates/Empty\ Document
 
-#Then go to any folder and right-click to see that the contextual item <i>'New Document'</i> > <i>'Empty Document'</i> has been created
+#Then go to any folder and right-click to see that the contextual
+#item <i>'New Document'</i> > <i>'Empty Document'</i> has been created
 # End of script
 ```
 
