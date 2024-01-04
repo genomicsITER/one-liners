@@ -1431,7 +1431,7 @@ echo ${n}`
 touch ~/Templates/Empty\ Document
 
 #Then go to any folder and right-click to see that the contextual
-#item <i>'New Document'</i> > <i>'Empty Document'</i> has been created.
+#item 'New Document' > 'Empty Document' has been created.
 
 # End of script
 ```
