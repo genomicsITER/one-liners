@@ -88,8 +88,8 @@
 <li><a href="#code58">Monitor processes in your HPC (squeue, sacct, etc.)</li></a>
 <li><a href="#code59">List file recursively by last modification time</li></a>
 <li><a href="#code60">Remove extension from a file name</li></a>
+<li><a href="#code61">Create a template 'Empy Document' in order to show this option in the contextual menu in Ubuntu</li></a>
 </details>
-
 
 <hr>
 
@@ -1420,4 +1420,16 @@ echo ${n}`
 
 <hr>
 
+<a name="code61"></a>
+
+**Create a template 'Empy Document' in order to show this option in the contextual menu in Ubuntu**
+
+```Bash
+#!/bin/bash
+
+#Open a shell and run this:
+touch ~/Templates/Empty\ Document
+
+# End of script
+```
 
