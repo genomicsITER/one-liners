@@ -89,6 +89,7 @@
 <li><a href="#code59">List file recursively by last modification time</li></a>
 <li><a href="#code60">Remove extension from a file name</li></a>
 <li><a href="#code61">Create a template <i>'Empy Document'</i> in order to show this option in the contextual menu in Ubuntu</li></a>
+<li><a href="#code62">Set an infinite history length of bashrc in Ubuntu .bashrc using HISTSIZE and HISTFILESIZEin bash</li></a>
 </details>
 
 <hr>
@@ -1436,3 +1437,25 @@ touch ~/Templates/Empty\ Document
 # End of script
 ```
 
+<hr>
+
+<a name="code62"></a>
+
+**Set an infinite history length of bashrc in Ubuntu .bashrc using HISTSIZE and HISTFILESIZEin bash**
+
+```Bash
+#!/bin/bash
+
+#Edit the '.bashrc' file in your /home/user directory
+#Find the HISTSIZE and HISTFILESIZE sections and replace with these values:
+
+# Numeric values less than zero result in every command being saved on the history list (there is no limit). 
+# Old value: HISTSIZE=1000
+HISTSIZE=-1
+
+# Non-numeric values and numeric values less than zero inhibit truncation.
+# Old value: HISTFILESIZE=2000
+HISTFILESIZE=-1
+
+# End of script
+```
