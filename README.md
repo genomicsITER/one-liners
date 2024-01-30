@@ -89,7 +89,8 @@
 <li><a href="#code59">List file recursively by last modification time</li></a>
 <li><a href="#code60">Remove extension from a file name</li></a>
 <li><a href="#code61">Create a template <i>'Empy Document'</i> in order to show this option in the contextual menu in Ubuntu</li></a>
-<li><a href="#code62">Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZEin bash</li></a>
+<li><a href="#code62">Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZE in bash</li></a>
+<li><a href="#code63">Set to lowercase or uppercase a string in AWK</li></a>
 </details>
 
 <hr>
@@ -1441,7 +1442,7 @@ touch ~/Templates/Empty\ Document
 
 <a name="code62"></a>
 
-**Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZEin bash**
+**Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZE in bash**
 
 ```Bash
 #!/bin/bash
@@ -1459,3 +1460,21 @@ HISTFILESIZE=-1
 
 # End of script
 ```
+<hr>
+
+<a name="code63"></a>
+
+**Set to lowercase or uppercase a string in AWK**
+
+```Bash
+#!/bin/bash
+
+#To lowercase field in position 1
+awk -F'[\t]' '{ tolower($1) }' infile > outfile
+
+#To uppercase field in position 2
+awk -F'[\t]' '{ tolower($2) }' infile > outfile
+
+# End of script
+```
+
