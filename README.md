@@ -90,7 +90,7 @@
 <li><a href="#code60">Remove extension from a file name</li></a>
 <li><a href="#code61">Create a template <i>'Empy Document'</i> in order to show this option in the contextual menu in Ubuntu</li></a>
 <li><a href="#code62">Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZE in bash</li></a>
-<li><a href="#code63">Set to lowercase or uppercase a string in AWK</li></a>
+<li><a href="#code63">Set a string to lowercase or uppercase in AWK</li></a>
 </details>
 
 <hr>
@@ -1464,7 +1464,7 @@ HISTFILESIZE=-1
 
 <a name="code63"></a>
 
-**Set to lowercase or uppercase a string in AWK**
+**Set a string to lowercase or uppercase in AWK**
 
 ```Bash
 #!/bin/bash
