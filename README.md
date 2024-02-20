@@ -91,6 +91,9 @@
 <li><a href="#code61">Create a template <i>'Empy Document'</i> in order to show this option in the contextual menu in Ubuntu</li></a>
 <li><a href="#code62">Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZE in bash</li></a>
 <li><a href="#code63">Set a string to lowercase or uppercase in AWK</li></a>
+<li><a href="#code64">Mount a network NTFS volume from the shell into a local folder</li></a>
+<li><a href="#code65">Configure a workstation folder mounting on a remote NAS volume from the shell</li></a>
+
 </details>
 
 <hr>
@@ -1478,3 +1481,25 @@ awk -F'[\t]' '{ tolower($2) }' infile > outfile
 # End of script
 ```
 
+<a name="code64"></a>
+
+**Mount a network NTFS volume from the shell into a local folder**
+
+```Bash
+#!/bin/bash
+sudo mount.cifs -v //192.168.xx.yy/<remote-folder> /mnt/cifs1 -o sec=ntlmv2,vers=1.0,domain=<your-domai>,username=<user-name>
+
+# End of script
+```
+
+<a name="code65"></a>
+
+**Configure a workstation folder mounting on a remote NAS volume from the shell**
+
+sudo mount -t cifs \
+-o user=<user-name>,password=<password>,iocharset=utf8,noperm \
+//192.168.xx.yy/<remote-folder> \
+/mnt/<local-folder>
+
+# End of script
+```
