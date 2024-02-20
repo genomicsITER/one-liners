@@ -1480,6 +1480,7 @@ awk -F'[\t]' '{ tolower($2) }' infile > outfile
 
 # End of script
 ```
+<hr>
 
 <a name="code64"></a>
 
@@ -1492,6 +1493,7 @@ sudo mount.cifs -v //192.168.xx.yy/<remote-folder> \
 
 # End of script
 ```
+<hr>
 
 <a name="code65"></a>
 
@@ -1504,3 +1506,4 @@ sudo mount -t cifs \
 
 # End of script
 ```
+<hr>
