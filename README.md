@@ -91,7 +91,7 @@
 <li><a href="#code61">Create a template <i>'Empy Document'</i> in order to show this option in the contextual menu in Ubuntu</li></a>
 <li><a href="#code62">Set an infinite history length of bashrc in Ubuntu using HISTSIZE and HISTFILESIZE in bash</li></a>
 <li><a href="#code63">Set a string to lowercase or uppercase in AWK</li></a>
-<li><a href="#code64">Mount a network NTFS volume from the shell into a local folder</li></a>
+<li><a href="#code64">Mount a network NTFS volume into a local folder from the shell</li></a>
 <li><a href="#code65">Configure a workstation folder mounting on a remote NAS volume from the shell</li></a>
 
 </details>
@@ -1484,7 +1484,7 @@ awk -F'[\t]' '{ tolower($2) }' infile > outfile
 
 <a name="code64"></a>
 
-**Mount a network NTFS volume from the shell into a local folder**
+**Mount a network NTFS volume into a local folder from the shell**
 
 ```Bash
 #!/bin/bash
