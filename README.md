@@ -1490,7 +1490,7 @@ awk -F'[\t]' '{ tolower($2) }' infile > outfile
 #!/bin/bash
 
 sudo mount.cifs -v //192.168.xx.yy/<remote-folder> \
-/mnt/cifs1 -o sec=ntlmv2,vers=1.0,domain=<your-domai>,username=<user-name>
+/mnt/cifs1 -o sec=ntlmv2,vers=1.0,domain=<your-domain>,username=<username>
 
 # End of script
 ```
@@ -1504,7 +1504,7 @@ sudo mount.cifs -v //192.168.xx.yy/<remote-folder> \
 #!/bin/bash
 
 sudo mount -t cifs \
--o user=<user-name>,password=<password>,iocharset=utf8,noperm \
+-o user=<username>,password=<password>,iocharset=utf8,noperm \
 //192.168.xx.yy/<remote-folder> \
 /mnt/<local-folder>
 
