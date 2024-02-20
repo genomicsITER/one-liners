@@ -1488,6 +1488,7 @@ awk -F'[\t]' '{ tolower($2) }' infile > outfile
 
 ```Bash
 #!/bin/bash
+
 sudo mount.cifs -v //192.168.xx.yy/<remote-folder> \
 /mnt/cifs1 -o sec=ntlmv2,vers=1.0,domain=<your-domai>,username=<user-name>
 
@@ -1499,6 +1500,9 @@ sudo mount.cifs -v //192.168.xx.yy/<remote-folder> \
 
 **Configure a workstation folder mounting on a remote NAS volume from the shell**
 
+```Bash
+#!/bin/bash
+
 sudo mount -t cifs \
 -o user=<user-name>,password=<password>,iocharset=utf8,noperm \
 //192.168.xx.yy/<remote-folder> \
@@ -1506,4 +1510,3 @@ sudo mount -t cifs \
 
 # End of script
 ```
-<hr>
