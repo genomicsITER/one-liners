@@ -1520,8 +1520,8 @@ sudo mount -t cifs \
 ```Bash
 #!/bin/bash
 
-#Example: keep the header of a VCF file except the last line (with CHR, POS, ID, REF, ALT, and
-#the rest of fields)
+#Example: keep the header of a VCF file except the last line (i.e., the line with CHR, POS, ID,
+#REF, ALT, and the rest of fields).
 
 head -n -1 ${infile} > file-without-the-last-line
 
