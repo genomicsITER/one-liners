@@ -93,7 +93,7 @@
 <li><a href="#code63">Set a string to lowercase or uppercase in AWK</li></a>
 <li><a href="#code64">Mount a network NTFS volume into a local folder from the shell</li></a>
 <li><a href="#code65">Configure a workstation folder mounting on a remote NAS volume from the shell</li></a>
-
+<li><a href="#code66">Grab the header of a file excluding the last line</li></a>
 </details>
 
 <hr>
@@ -1510,3 +1510,21 @@ sudo mount -t cifs \
 
 # End of script
 ```
+
+<hr>
+
+<a name="code66"></a>
+
+**Grab the header of a file excluding the last line**
+
+```Bash
+#!/bin/bash
+
+#Example: keep the header of a VCF file except the last line (with CHR, POS, ID, REF, ALT, and
+#the rest of fields)
+
+head -n -1 ${infile} > file-without-the-last-line
+
+# End of script
+```
+
