@@ -94,6 +94,7 @@
 <li><a href="#code64">Mount a network NTFS volume into a local folder from the shell</li></a>
 <li><a href="#code65">Configure a workstation folder mounting on a remote NAS volume from the shell</li></a>
 <li><a href="#code66">Grab the header of a file excluding the last line</li></a>
+<li><a href="#code67">Break MNPs and exclude spanning deletions (SD) from a VCF/gVCF file using BCFtools</li></a>
 </details>
 
 <hr>
@@ -1528,3 +1529,23 @@ head -n -1 ${infile} > file-without-the-last-line
 # End of script
 ```
 
+<hr>
+
+<a name="code67"></a>
+
+**Break MNPs and exclude spanning deletions (SD) from a VCF/gVCF file using BCFtools**
+
+```Bash
+#!/bin/bash
+
+#Define your files
+infile="file.vcf.gz"
+outfile="file.noMNP.noSD.vcf.gz"
+
+# For each single VCF or gVCF, split MNPS and avoid spanning-deletions (marked as ALT=*)(SD), and index
+bcftools norm -m -both ${infile} -Ou | \
+bcftools view -e 'ALT="*"' -Oz -o ${outfile}
+bcftools index -f -t ${outfile}
+
+# End of script
+```
