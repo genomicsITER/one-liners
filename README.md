@@ -844,7 +844,7 @@ awk 'NR == 1; NR > 1 {print $0 | "sort -k 3"}' ${infile} > ${outfile}
 #!/bin/bash
 
 infile="columnar.fasta"
-outfile="sinleline.fasta"
+outfile="singleline.fasta"
 
 awk '{ 
 if (NR==1) { print $0 }
