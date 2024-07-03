@@ -1561,10 +1561,10 @@ bcftools index -f -t ${outfile}
 ```Bash
 #!/bin/bash
 
-# Split a list with sample codes into 10 new sublists
-#'sublist' is the name suffix for new files
+# Split a 'list' file (i.e., with sample codes in rows) into 10 new sublists
+# 'sublist' is the name preffix for new files
 
-#split -d list sublist -n 10
+split -d list sublist -n 10
 
 # End of script
 ```
