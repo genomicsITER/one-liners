@@ -95,6 +95,12 @@
 <li><a href="#code65">Configure a workstation folder mounting on a remote NAS volume from the shell</li></a>
 <li><a href="#code66">Grab the header of a file excluding the last line</li></a>
 <li><a href="#code67">Break MNPs and exclude spanning deletions (SD) from a VCF/gVCF file using BCFtools</li></a>
+<li><a href="#code68">Split a file with a list in a number of sublists using BASH</li></a>
+<li><a href="#code69">Add new line ('\n') at the end of a file using BASH</li></a>
+  sed -i -z 's/$/\n/g' file.txt
+
+
+  
 </details>
 
 <hr>
@@ -1549,3 +1555,36 @@ bcftools index -f -t ${outfile}
 
 # End of script
 ```
+
+<hr>
+
+<a name="code68"></a>
+
+**Split a file with a list in a number of sublists using BASH**
+
+```Bash
+#!/bin/bash
+
+# Split a list with sample codes into 10 new sublists
+#'sublist' is the name suffix for new files
+
+#split -d list sublist -n 10
+
+# End of script
+```
+
+<hr>
+
+<a name="code69"></a>
+
+**Add new line ('\n') at the end of a file using BASH**
+
+```Bash
+#!/bin/bash
+
+sed -i -z 's/$/\n/g' infile > outfile
+
+# End of script
+```
+ 
+
