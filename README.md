@@ -97,10 +97,6 @@
 <li><a href="#code67">Break MNPs and exclude spanning deletions (SD) from a VCF/gVCF file using BCFtools</li></a>
 <li><a href="#code68">Split a file with a list in a number of sublists using BASH</li></a>
 <li><a href="#code69">Add new line ('\n') at the end of a file using BASH</li></a>
-  sed -i -z 's/$/\n/g' file.txt
-
-
-  
 </details>
 
 <hr>
