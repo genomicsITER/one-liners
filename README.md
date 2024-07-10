@@ -97,6 +97,9 @@
 <li><a href="#code67">Break MNPs and exclude spanning deletions (SD) from a VCF/gVCF file using BCFtools</li></a>
 <li><a href="#code68">Split a file with a list in a number of sublists using BASH</li></a>
 <li><a href="#code69">Add new line ('\n') at the end of a file using BASH</li></a>
+<li><a href="#code70">Keep only SNPs from a VCF using BCFtools</li></a>
+<li><a href="#code71">Grab the list of variants from a VCF using BCFtools</li></a>
+<li><a href="#code72">Merge a list of VCF files using BCFtools</li></a>
 </details>
 
 <hr>
@@ -1582,5 +1585,59 @@ sed -i -z 's/$/\n/g' infile > outfile
 
 # End of script
 ```
- 
+
+<hr>
+
+<a name="code70"></a>
+
+**Keep only SNPs from a VCF using BCFtools**
+
+```Bash
+#!/bin/bash
+
+infile="in.vcf.gz"
+outfile="out.onlySNPs.vcf.gz"
+
+bcftools view --types snps -m 2 -M 2 ${infile} -Oz -o ${outfile}
+
+# End of script
+```
+
+<hr>
+
+<a name="code71"></a>
+
+**Grab the list of variants from a VCF using BCFtools**
+
+```Bash
+#!/bin/bash
+
+infile="in.vcf.gz"
+outfile="variants.list"
+
+bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT\n' ${infile} > ${outfile}
+
+# End of script
+```
+
+<hr>
+
+<a name="code72"></a>
+
+**Merge a list of VCF files using BCFtools**
+
+```Bash
+#!/bin/bash
+
+list="list.of.vcf.files"
+outfile="merged.vcf.gz"
+
+#Merge
+bcftools merge -m none -l ${list} -Oz -o ${outfile}
+#Index
+bcftools index -f -t ${outfile}
+
+# End of script
+```
+
 
