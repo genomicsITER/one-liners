@@ -100,6 +100,7 @@
 <li><a href="#code70">Keep only SNPs from a VCF using BCFtools</li></a>
 <li><a href="#code71">Grab the list of variants from a VCF using BCFtools</li></a>
 <li><a href="#code72">Merge a list of VCF files using BCFtools</li></a>
+<li><a href="#code73">List the content of a file, line by line, showing line numbers with BASH</li></a>
 </details>
 
 <hr>
@@ -1640,4 +1641,28 @@ bcftools index -f -t ${outfile}
 # End of script
 ```
 
+<hr>
 
+<a name="code77"></a>
+
+**List the content of a file, line by line, showing line numbers with BASH**
+
+```Bash
+#!/bin/bash
+infile="filename-here"
+
+#Option1
+awk '{print NR  "> " $s}' ${infile}
+
+#Option2
+#See 'nl --help'  for options
+nl -b a ${infile}
+
+#Option3
+#See 'pr --help' for options
+pr -t -n ${infile}
+
+# End of script
+```
+
+<hr>
