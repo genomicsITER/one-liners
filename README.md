@@ -1643,7 +1643,7 @@ bcftools index -f -t ${outfile}
 
 <hr>
 
-<a name="code77"></a>
+<a name="code73"></a>
 
 **List the content of a file, line by line, showing line numbers with BASH**
 
