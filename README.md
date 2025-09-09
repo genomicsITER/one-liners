@@ -101,7 +101,7 @@
 <li><a href="#code71">Grab the list of variants from a VCF using BCFtools</li></a>
 <li><a href="#code72">Merge a list of VCF files using BCFtools</li></a>
 <li><a href="#code73">List the content of a file, line by line, showing line numbers with BASH</li></a>
-<li><a href="#code74">Add a leading '0' to folder names with BASH</li></a>
+<li><a href="#code74">Add a number of leading zeroes ('0') to folder names within a directory with BASH</li></a>
 </details>
 
 <hr>
@@ -1670,7 +1670,7 @@ pr -t -n ${infile}
 
 <a name="code74"></a>
 
-**Add a leading '0' to folder names with BASH**
+**Add a number of leading zeroes ('0') to folder names within a directory with BASH**
 
 ```Bash
 #!/bin/bash
