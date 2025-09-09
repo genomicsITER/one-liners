@@ -101,6 +101,7 @@
 <li><a href="#code71">Grab the list of variants from a VCF using BCFtools</li></a>
 <li><a href="#code72">Merge a list of VCF files using BCFtools</li></a>
 <li><a href="#code73">List the content of a file, line by line, showing line numbers with BASH</li></a>
+<li><a href="#code74">Add a leading '0' to folder names with BASH</li></a>
 </details>
 
 <hr>
@@ -1661,6 +1662,51 @@ nl -b a ${infile}
 #Option3
 #See 'pr --help' for options
 pr -t -n ${infile}
+
+# End of script
+```
+
+<hr>
+
+<a name="code74"></a>
+
+**Add a leading '0' to folder names with BASH**
+
+```Bash
+#!/bin/bash
+
+#Rename folders in a directory to write leading zeroes to folder names
+#BEFORE (list of folders)
+#1_folderA
+#2_folderB
+#...
+#11_folderK
+#12_folderL
+#...
+
+#BEFORE (list of renamed folders)
+#001_folderA
+#002_folderB
+#...
+#011_folderK
+#012_folderL
+#...
+
+#The number of leading zeroes is controled by '%03d' (for three zeroes)
+
+indir="my-dir"
+cd ${indir}
+
+for d in *; do
+  if [ -d "$d" ] && [[ "$d" =~ ^([0-9]+)_(.*)$ ]]; then
+    num="${BASH_REMATCH[1]}"
+    rest="${BASH_REMATCH[2]}"
+    new="$(printf "%03d" "$num")_$rest"
+    if [ "$d" != "$new" ]; then
+      mv -v -- "$d" "$new"
+    fi
+  fi
+done
 
 # End of script
 ```
