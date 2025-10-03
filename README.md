@@ -1221,6 +1221,10 @@ ls -v1 "*.Fst" > ${list}
 
 sed 's/\.\/\./0\/0/g' infile.vcf > infile.with-replaced-genotypes.vcf
 
+#Alternative using a BCFtools plugin (replace '.' with '0')
+
+bcftools +setGT infile.vcf -Ov -o  infile.with-replaced-genotypes.vcf -- -t . -n 0
+
 # End of script
 ```
 
