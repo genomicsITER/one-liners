@@ -1222,8 +1222,23 @@ ls -v1 "*.Fst" > ${list}
 sed 's/\.\/\./0\/0/g' infile.vcf > infile.with-replaced-genotypes.vcf
 
 #Alternative using a BCFtools '+setGT' plugin (replace '.' with '0')
-#   -n, --new-gt <type>         Genotypes to set, see above
-#   -t, --target-gt <type>      Genotypes to change, see above
+#   -n, --new-gt <type>         Genotypes to set ('0' in this case)
+#   -t, --target-gt <type>      Genotypes to change ('.' in this case)
+#
+#Check the help for this plugin:
+#About: Sets genotypes. The target genotypes can be specified as:
+#           ./.  .. completely missing ("." or "./.", depending on ploidy)
+#           ./x  .. partially missing (e.g., "./0" or ".|1" but not "./.")
+#           .    .. partially or completely missing
+#           a    .. all genotypes
+#           b    .. heterozygous genotypes failing two-tailed binomial test (example below)
+#           q    .. select genotypes using -i/-e options
+#       and the new genotype can be one of:
+#           .    .. missing ("." or "./.", keeps ploidy)
+#           0    .. reference allele
+#           M    .. major allele
+#           p    .. phased genotype
+#           u    .. unphase genotype and sort by allele (1|0 becomes 0/1)
 
 bcftools +setGT infile.vcf -Ov -o infile.with-replaced-genotypes.vcf -- -t . -n 0
 
