@@ -1758,13 +1758,17 @@ else
 
 #A-H1N1 Segments 4 (HA) and 6 (NA)
 strain="H1N1"
-grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 4 HA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.HA.linear.fasta
-grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 6 NA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 4 HA" | \
+sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.HA.linear.fasta
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 6 NA" | \
+sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
 
 #A-H3N2 Segments 4 (HA) and 6 (NA)
 strain="H3N2"
-grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 4 HA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.HA.linear.fasta
-grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 6 NA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 4 HA" | \
+sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.HA.linear.fasta
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 6 NA" | \
+sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
 
 # End of script
 ```
