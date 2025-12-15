@@ -102,6 +102,7 @@
 <li><a href="#code72">Merge a list of VCF files using BCFtools</li></a>
 <li><a href="#code73">List the content of a file, line by line, showing line numbers with BASH</li></a>
 <li><a href="#code74">Add a number of leading zeroes ('0') to folder names within a directory with BASH</li></a>
+<li><a href="#code75">Convert a columnad FASTA into a linera FASTA and extract Influenza A-H1N1/A-H3N2 segments 4 (HA) and 6 (NA) into different linear files with BASH</li></a>
 </details>
 
 <hr>
@@ -1733,3 +1734,40 @@ done
 ```
 
 <hr>
+
+<a name="code75"></a>
+
+**Convert a columnad FASTA into a linera FASTA and extract Influenza A-H1N1/A-H3N2 segments 4 (HA) and 6 (NA) into different linear files with BASH**
+
+```Bash
+#!/bin/bash
+
+infile="all_consensus.columnar"
+outfile="all_consensus.linear"
+
+awk '{ 
+if (NR==1) { print $0 }
+else
+    {
+    if ($0 ~ /^>/)
+        { print "\n"$0 }
+    else
+        { printf $0 }
+    }
+}' ${infile}.fasta > ${outfile}.fasta
+
+#A-H1N1 Segments 4 (HA) and 6 (NA)
+strain="H1N1"
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 4 HA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.HA.linear.fasta
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 6 NA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
+
+#A-H3N2 Segments 4 (HA) and 6 (NA)
+strain="H3N2"
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 4 HA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.HA.linear.fasta
+grep -A 1 ${strain} ${outfile}.fasta | grep -A 1 "Segment 6 NA" | sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
+
+# End of script
+```
+
+<hr>
+
