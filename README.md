@@ -1793,7 +1793,7 @@ sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
 #22  rs1  100  0.295  7601.85  8283.89  -0.0373148  -0.653108     0
 #22  rs2  200  0.231  1319.32  9857.35  -0.1265296  -0.336114     0
 
-#Insert a header in line 1 using sed
+#Insert a header in line 1 using sed and tabs as separators
 sed -i '1i chr\tid\tpos\tp1\tiHH1\tiHH0\tihs\tnormihs\tcrit' file.txt
 
 #The same file with a header
