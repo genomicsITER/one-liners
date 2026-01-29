@@ -103,6 +103,7 @@
 <li><a href="#code73">List the content of a file, line by line, showing line numbers with BASH</li></a>
 <li><a href="#code74">Add a number of leading zeroes ('0') to folder names within a directory with BASH</li></a>
 <li><a href="#code75">Convert a columnad FASTA into a linera FASTA and extract Influenza A-H1N1/A-H3N2 segments 4 (HA) and 6 (NA) into different linear files with BASH</li></a>
+<li><a href="#code76">Insert a header into a file using in-place edition of sed command</li></a>
 </details>
 
 <hr>
@@ -1781,3 +1782,25 @@ sed '/^[[:space:]]*--[[:space:]]*$/d' >> ${outfile}.A-${strain}.NA.linear.fasta
 
 <hr>
 
+<a name="code76"></a>
+
+**Insert a header into a file using in-place edition of sed command**
+
+```Bash
+#!/bin/bash
+
+#File with no header
+#1	chr1-100	100	0.295	7601.85	8283.89	-0.0373148	-0.653108	0
+#1	chr1-200	200	0.23	13191.3	9857.35	0.126529	-0.336114	0
+
+#Insert a header in line 1 using sed
+sed -i '1i chr\tid\tpos\tp1\tiHH1\tiHH0\tihs\tnormihs\tcrit' file.txt
+
+#The new file will look like this
+#chr	id	pos	p1	iHH1	iHH0	ihs	normihs	crit
+#1	chr1-100	100	0.295	7601.85	8283.89	-0.0373148	-0.653108	0
+#1	chr1-200	200	0.23	13191.3	9857.35	0.126529	-0.336114	0
+
+# End of script
+```
+<hr>
