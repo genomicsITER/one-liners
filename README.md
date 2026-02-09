@@ -256,6 +256,13 @@ awk ' !uniq[$0]++ ' infile.vcf
 
 <hr>
 
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
+
+
 <a name="code11"></a>
 
 **Find duplicated lines in a VCF matching files 1, 2, and 5**
@@ -440,6 +447,12 @@ awk -v OFS="\t" '$1=$1' tmp1 > tmp2
 
 # End of script
 ```
+
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
 
 
 <hr>
@@ -646,6 +659,12 @@ gatk VariantsToTable \
 
 # End of script
 ```
+
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
 
 
 <hr>
@@ -896,8 +915,14 @@ samtools index ${indir}/${outfile}.bam
 # End of script
 ```
 
-
 <hr>
+
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
+
 
 <a name="code41"></a>
 
@@ -1192,6 +1217,12 @@ bcftools index -t -f infile.vcf.gz
 
 <hr>
 
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
+
 <a name="code51"></a>
 
 **Sort numerically a list of files within a directory and save the list into a new file**
@@ -1457,6 +1488,13 @@ echo ${n}`
 
 <hr>
 
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
+
+
 <a name="code61"></a>
 
 **Create a template <i>'Empy Document'</i> in order to show this option in the contextual menu in Ubuntu**
@@ -1691,6 +1729,13 @@ pr -t -n ${infile}
 ```
 
 <hr>
+
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
+
 
 <a name="code74"></a>
 
