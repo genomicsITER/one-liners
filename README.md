@@ -1829,7 +1829,7 @@ done
 <hr>
 
 <p align="right">
-  <a href="#PFgenetics" title="Up">
+  <a href="#inicio" title="Up">
     <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
   </a>
 </p>
