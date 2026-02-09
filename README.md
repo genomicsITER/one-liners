@@ -253,15 +253,13 @@ awk ' !uniq[$0]++ ' infile.vcf
 # End of script
 ```
 
-
-<hr>
-
 <p align="right">
   <a href="#inicio" title="Up">
     <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
   </a>
 </p>
 
+<hr>
 
 <a name="code11"></a>
 
@@ -915,14 +913,13 @@ samtools index ${indir}/${outfile}.bam
 # End of script
 ```
 
-<hr>
-
 <p align="right">
   <a href="#inicio" title="Up">
     <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
   </a>
 </p>
 
+<hr>
 
 <a name="code41"></a>
 
@@ -1213,15 +1210,13 @@ bcftools index -t -f infile.vcf.gz
 
 + https://www.gnu.org/software/gawk/manual/html_node/String-Functions.html
 
-
-
-<hr>
-
 <p align="right">
   <a href="#inicio" title="Up">
     <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
   </a>
 </p>
+
+<hr>
 
 <a name="code51"></a>
 
@@ -1486,14 +1481,13 @@ echo ${n}`
 # End of script
 ```
 
-<hr>
-
 <p align="right">
   <a href="#inicio" title="Up">
     <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
   </a>
 </p>
 
+<hr>
 
 <a name="code61"></a>
 
@@ -1667,6 +1661,12 @@ bcftools view --types snps -m 2 -M 2 ${infile} -Oz -o ${outfile}
 # End of script
 ```
 
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
+
 <hr>
 
 <a name="code71"></a>
@@ -1729,12 +1729,6 @@ pr -t -n ${infile}
 ```
 
 <hr>
-
-<p align="right">
-  <a href="#inicio" title="Up">
-    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
-  </a>
-</p>
 
 
 <a name="code74"></a>
@@ -1871,10 +1865,11 @@ for f in *.chr*.vcf.gz; do
 done
 # End of script
 ```
-<hr>
 
 <p align="right">
   <a href="#inicio" title="Up">
     <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
   </a>
 </p>
+
+<hr>
