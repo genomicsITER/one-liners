@@ -104,6 +104,7 @@
 <li><a href="#code74">Add a number of leading zeroes ('0') to folder names within a directory with BASH</li></a>
 <li><a href="#code75">Convert a columnad FASTA into a linera FASTA and extract Influenza A-H1N1/A-H3N2 segments 4 (HA) and 6 (NA) into different linear files with BASH</li></a>
 <li><a href="#code76">Insert a header into a file using in-place edition of sed command</li></a>
+<li><a href="#code76">Rename a bunch of files in a folder with shell loop using pattern substitution</li></a>
 </details>
 
 <hr>
@@ -1801,6 +1802,28 @@ sed -i '1i chr\tid\tpos\tp1\tiHH1\tiHH0\tihs\tnormihs\tcrit' file.txt
 #22  rs1  100  0.295  7601.85  8283.89  -0.0373148  -0.653108     0
 #22  rs2  200  0.231  1319.32  9857.35  -0.1265296  -0.336114     0
 
+# End of script
+```
+<hr>
+
+<a name="code77"></a>
+
+**Rename a bunch of files in a folder with shell loop using pattern substitution**
+
+```Bash
+#!/bin/bash
+
+#Files to be renamed "*.chr*.vcf.gz"
+#Sanity check before renaming: check that in and out files are fine
+suffix="<a-suffix>"
+for f in *.chr*.vcf.gz; do
+    echo mv "$f" "${f/.chr/.$suffix.chr}"
+done
+
+#Then, rename the files
+for f in *.chr*.vcf.gz; do
+    mv "$f" "${f/.chr/.$suffix.chr}"
+done
 # End of script
 ```
 <hr>
