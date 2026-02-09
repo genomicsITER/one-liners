@@ -1813,7 +1813,7 @@ sed -i '1i chr\tid\tpos\tp1\tiHH1\tiHH0\tihs\tnormihs\tcrit' file.txt
 ```Bash
 #!/bin/bash
 
-#Files to be renamed "*.chr*.vcf.gz"
+#Files to be renamed "*.chr*.vcf.gz" as "*.${suffix}.chr*.vcf.gz" 
 #Sanity check before renaming: check that in and out files are fine
 suffix="<a-suffix>"
 for f in *.chr*.vcf.gz; do
