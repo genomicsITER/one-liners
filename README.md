@@ -104,7 +104,8 @@
 <li><a href="#code74">Add a number of leading zeroes ('0') to folder names within a directory with BASH</li></a>
 <li><a href="#code75">Convert a columnad FASTA into a linera FASTA and extract Influenza A-H1N1/A-H3N2 segments 4 (HA) and 6 (NA) into different linear files with BASH</li></a>
 <li><a href="#code76">Insert a header into a file using in-place edition of sed command</li></a>
-<li><a href="#code76">Rename a bunch of files in a folder with shell loop using pattern substitution</li></a>
+<li><a href="#code77">Rename a bunch of files in a folder with shell loop using pattern substitution</li></a>
+<li><a href="#code78">List, and sort by group, the users of my HPC system</li></a>
 </details>
 
 <hr>
@@ -1873,3 +1874,21 @@ done
 </p>
 
 <hr>
+
+<a name="code78"></a>
+
+**List, and sort by group, the users of my HPC system**
+
+```Bash
+#!/bin/bash
+
+sacctmgr -P show user format=DefaultAccount,User,Admin | sort -t'|' -k1,1
+
+# End of script
+```
+
+<p align="right">
+  <a href="#inicio" title="Up">
+    <img src="https://github.com/genomicsITER/one-liners/blob/master/images/home-icon.png" style="float: right; margin: 10px; padding: 2px;" />
+  </a>
+</p>
