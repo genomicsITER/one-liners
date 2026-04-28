@@ -950,6 +950,9 @@ zip -r -j *.zip
 
 PS1='\u:\W\$ '
 
+#Or (for my Rocky system; just show the actual user as the prompt)
+PS1='\u:\$ '
+
 #Done!
 # End of script
 ```
